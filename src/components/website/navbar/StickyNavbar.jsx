@@ -1,13 +1,13 @@
-import { PhoneCall } from 'lucide-react'
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 const StickyNavbar = () => {
     return (
         <div className=' bg-[#252b42] '  >
-            <div className='flex justify-between items-center p-4 max-w-7xl mx-auto'>
+            <div className='flex lg:flex-row flex-col gap-y-3.5 lg:gap-y-0 justify-between items-center p-4 max-w-7xl mx-auto'>
                 {/* 1st section  */}
-                <div className=' flex flex-row justify-between items-center gap-x-8 ' >
+                <div className=' flex lg:flex-row flex-col justify-between items-center gap-x-8 ' >
                     <div className='flex items-center gap-2 text-white'>
                         <span>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
