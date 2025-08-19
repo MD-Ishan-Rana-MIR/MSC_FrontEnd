@@ -1,6 +1,7 @@
 import React from "react";  // <-- Add this
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
+import HomePage from "@/page/website/home-page/HomePage";
 
 export const MainRouter = createBrowserRouter([
     {
@@ -9,7 +10,7 @@ export const MainRouter = createBrowserRouter([
         children: [
             {
                 index: true, // better than repeating "/"
-                element: <div>Home Page</div>,
+                element: <HomePage></HomePage>,
             },
         ],
     },
