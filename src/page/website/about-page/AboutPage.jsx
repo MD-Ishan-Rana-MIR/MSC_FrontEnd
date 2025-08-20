@@ -6,6 +6,8 @@ import AboutNavbar from '@/components/website/navbar/AboutNavbar'
 import Customar from './Customar'
 import AboutVideo from './AboutVideo'
 import Team from './Team'
+import Company from './Company'
+import Work from './Work'
 
 const AboutPage = () => {
   return (
@@ -15,6 +17,8 @@ const AboutPage = () => {
         <Customar></Customar>
         <AboutVideo></AboutVideo>
         <Team></Team>
+        <Company></Company>
+        <Work></Work>
         <Footer></Footer>
     </div>
   )
