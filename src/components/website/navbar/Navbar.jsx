@@ -39,26 +39,8 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6 items-center">
             <Link to="/" className="text-[#737373] text-sm font-bold">Home</Link>
+            <Link to="/shop" className="text-[#737373] text-sm font-bold">Shop</Link>
 
-            {/* Shop Dropdown */}
-            <DropdownMenu open={shopOpen} onOpenChange={setShopOpen}>
-              <DropdownMenuTrigger
-                asChild
-                onMouseEnter={() => setShopOpen(true)}
-                onMouseLeave={() => setShopOpen(false)}
-              >
-                <button className="text-[#737373] text-sm font-bold">Shop</button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                onMouseEnter={() => setShopOpen(true)}
-                onMouseLeave={() => setShopOpen(false)}
-                className="w-48"
-              >
-                <DropdownMenuItem><Link to="/shop/product1">Shop 1</Link></DropdownMenuItem>
-                <DropdownMenuItem><Link to="/shop/product2">Shop 2</Link></DropdownMenuItem>
-                <DropdownMenuItem><Link to="/shop/product3">Shop 3</Link></DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
 
             <Link to="/about" className="text-[#737373] text-sm font-bold">About</Link>
             <Link to="/blog" className="text-[#737373] text-sm font-bold">Blog</Link>
@@ -125,13 +107,7 @@ export default function Navbar() {
             >
               Shop
             </button>
-            {shopOpen && (
-              <div className="pl-4 mt-1 space-y-1">
-                <Link to="/shop/product1" className="block text-gray-600 py-1">Shop 1</Link>
-                <Link to="/shop/product2" className="block text-gray-600 py-1">Shop 2</Link>
-                <Link to="/shop/product3" className="block text-gray-600 py-1">Shop 3</Link>
-              </div>
-            )}
+            
           </div>
           <Link to="/about" className="block text-gray-700 font-bold py-1">About</Link>
           <Link to="/blog" className="block text-gray-700 font-bold py-1">Blog</Link>
