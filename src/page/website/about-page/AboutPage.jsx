@@ -12,14 +12,12 @@ import Work from './Work'
 const AboutPage = () => {
   return (
     <div>
-        <AboutNavbar></AboutNavbar>
         <AboutHero></AboutHero>
         <Customar></Customar>
         <AboutVideo></AboutVideo>
         <Team></Team>
         <Company></Company>
         <Work></Work>
-        <Footer></Footer>
     </div>
   )
 }

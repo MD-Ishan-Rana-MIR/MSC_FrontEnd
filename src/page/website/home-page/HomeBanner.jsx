@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ImageProvider } from "@/lib/ImageProvider";
 
 const slides = [
     {
@@ -32,7 +33,7 @@ const HomeBanner = () => {
     };
 
     return (
-        <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden bg-[#01b7dc]">
+        <div className="relative w-full min-h-screen overflow-hidden bg-[#01b7dc]">
             {slides.map((slide, index) => (
                 <div
                     key={slide.id}
@@ -56,8 +57,8 @@ const HomeBanner = () => {
 
                         {/* Right image area */}
                         <div
-                            className="w-full md:w-1/2 h-40 sm:h-56 md:h-full bg-cover bg-center"
-                            style={{ backgroundImage: `url(${slide.img})` }}
+                            className="w-full md:w-1/2 h-full bg-cover bg-center"
+                            style={{ backgroundImage: `url(${ImageProvider.banner})` }}
                         ></div>
                     </div>
                 </div>

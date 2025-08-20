@@ -39,13 +39,11 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6 items-center">
             <Link to="/" className="text-[#737373] text-sm font-bold">Home</Link>
-            <Link to="/shop" className="text-[#737373] text-sm font-bold">Shop</Link>
-
-
+            <Link to="/products" className="text-[#737373] text-sm font-bold">Shop</Link>
             <Link to="/about" className="text-[#737373] text-sm font-bold">About</Link>
-            <Link to="/blog" className="text-[#737373] text-sm font-bold">Blog</Link>
-            <Link to="/contact" className="text-[#737373] text-sm font-bold">Contact</Link>
-            <Link to="/pages" className="text-[#737373] text-sm font-bold">Pages</Link>
+            <Link to="/" className="text-[#737373] text-sm font-bold">Blog</Link>
+            <Link to="/" className="text-[#737373] text-sm font-bold">Contact</Link>
+            <Link to="/" className="text-[#737373] text-sm font-bold">Pages</Link>
           </div>
 
           {/* Right Icons */}
