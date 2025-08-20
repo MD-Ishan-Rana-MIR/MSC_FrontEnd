@@ -18,12 +18,13 @@ export const MainRouter = createBrowserRouter([
             {
                 path: "products",
                 element: <ProductListings />
+            },
+            {
+                path: "/about",
+                element: <AboutPage></AboutPage>
             }
         ],
 
     },
-    {
-        path: "/about",
-        element : <AboutPage></AboutPage>
-    }
+
 ]);

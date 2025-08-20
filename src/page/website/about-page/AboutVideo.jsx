@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Play } from "lucide-react";
+import { ImageProvider } from "@/lib/ImageProvider";
 
 const AboutVideo = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -11,7 +12,7 @@ const AboutVideo = () => {
             <div className="relative w-full rounded-2xl overflow-hidden shadow-lg">
                 {/* Thumbnail */}
                 <img
-                    src="https://i.ibb.co/ygsN3jk/video-thumbnail.jpg"
+                    src={ImageProvider.about}
                     alt="Video Thumbnail"
                     className="w-full aspect-video object-cover"
                 />

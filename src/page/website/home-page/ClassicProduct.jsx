@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ImageProvider } from "@/lib/ImageProvider";
 
 const slides = [
     {
@@ -9,14 +10,14 @@ const slides = [
         title: "NEW COLLECTION",
         subtitle: "SUMMER 2020",
         description: "We know how large objects will act, but things on a small scale.",
-        img: "https://i.ibb.co/9w5h9Bp/banner1.jpg",
+        img: ImageProvider.product,
     },
     {
         id: 2,
         title: "SPRING SALE",
         subtitle: "SPRING 2020",
         description: "Grab your favorite outfits at amazing discounts.",
-        img: "https://i.ibb.co/2N2Qk2x/banner2.jpg",
+        img: ImageProvider.product,
     },
 ];
 
@@ -59,7 +60,7 @@ const ClassicProduct = () => {
 
                         {/* Right image area */}
                         <div
-                            className="w-full md:w-1/2 h-40 sm:h-56  bg-cover bg-center"
+                            className="w-full md:w-1/2  sm:h-96 rounded-xl  bg-cover bg-center"
                             style={{ backgroundImage: `url(${slide.img})` }}
                         ></div>
                     </div>
@@ -73,7 +74,7 @@ const ClassicProduct = () => {
             >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
- 
+
             {/* Next button */}
             <button
                 onClick={nextSlide}
