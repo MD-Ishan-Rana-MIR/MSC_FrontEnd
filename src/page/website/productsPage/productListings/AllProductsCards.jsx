@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const productsData = [
   {
+    id: 1,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -10,6 +12,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 2,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -18,6 +21,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 3,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -26,6 +30,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 4,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -34,6 +39,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 5,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -42,6 +48,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 6,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -50,6 +57,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 7,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -58,6 +66,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 8,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -66,6 +75,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 9,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -74,6 +84,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 10,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -82,6 +93,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 11,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -90,6 +102,7 @@ const productsData = [
     colors: ['#00C9A7', '#FFB800', '#FF6B6B', '#3D8BFF'],
   },
   {
+    id: 12,
     name: 'Graphic Design',
     department: 'English Department',
     price: '$16.48',
@@ -158,28 +171,30 @@ const AllProductsCards = () => {
       {view === 'grid' ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
           {filteredProducts.map((product, idx) => (
-            <div key={idx} className="flex flex-col items-center bg-white rounded shadow-sm p-2">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-[280px] object-cover rounded"
-              />
-              <div className="mt-4 font-semibold text-[#23263B] text-base text-center">{product.name}</div>
-              <div className="text-xs text-gray-500 text-center">{product.department}</div>
-              <div className="mt-2 flex gap-2 items-center justify-center">
-                <span className="text-gray-400 line-through text-sm">{product.price}</span>
-                <span className="text-[#00C9A7] font-bold text-sm">{product.sale}</span>
+            <Link to={`/products/${product.id}`} key={idx}>
+              <div className="flex flex-col items-center bg-white rounded shadow-sm p-2">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-[280px] object-cover rounded"
+                />
+                <div className="mt-4 font-semibold text-[#23263B] text-base text-center">{product.name}</div>
+                <div className="text-xs text-gray-500 text-center">{product.department}</div>
+                <div className="mt-2 flex gap-2 items-center justify-center">
+                  <span className="text-gray-400 line-through text-sm">{product.price}</span>
+                  <span className="text-[#00C9A7] font-bold text-sm">{product.sale}</span>
+                </div>
+                <div className="mt-2 flex gap-2 justify-center">
+                  {product.colors.map((color, i) => (
+                    <span
+                      key={i}
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: color, display: 'inline-block' }}
+                    />
+                  ))}
+                </div>
               </div>
-              <div className="mt-2 flex gap-2 justify-center">
-                {product.colors.map((color, i) => (
-                  <span
-                    key={i}
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: color, display: 'inline-block' }}
-                  />
-                ))}
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (

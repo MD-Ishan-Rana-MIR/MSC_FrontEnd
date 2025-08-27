@@ -4,6 +4,10 @@ import MainLayout from "../layout/MainLayout";
 import HomePage from "@/page/website/home-page/HomePage";
 import ProductListings from "@/page/website/productsPage/productListings/ProductListings";
 import AboutPage from "@/page/website/about-page/AboutPage";
+import ContactPage from "@/page/website/contact-page/ContactPage";
+import ProductDetails from "@/page/website/productDetails/ProductDetails";
+import ProductDetailsPage from "@/page/website/productDetails/ProductDetailsPage";
+import AuthPage from "@/page/website/login-page/AuthPage";
 
 export const MainRouter = createBrowserRouter([
     {
@@ -20,11 +24,25 @@ export const MainRouter = createBrowserRouter([
                 element: <ProductListings />
             },
             {
+                path: "products/:id",
+                element: <ProductDetailsPage />
+            },
+            {
                 path: "/about",
                 element: <AboutPage></AboutPage>
+            },
+            {
+                path: "/contact",
+                element: <ContactPage />
             }
         ],
 
     },
+    {
+        path: "/auth",
+        element: <AuthPage />
+    }
+
+
 
 ]);

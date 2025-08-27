@@ -41,9 +41,7 @@ export default function Navbar() {
             <Link to="/" className="text-[#737373] text-sm font-bold">Home</Link>
             <Link to="/products" className="text-[#737373] text-sm font-bold">Shop</Link>
             <Link to="/about" className="text-[#737373] text-sm font-bold">About</Link>
-            <Link to="/" className="text-[#737373] text-sm font-bold">Blog</Link>
-            <Link to="/" className="text-[#737373] text-sm font-bold">Contact</Link>
-            <Link to="/" className="text-[#737373] text-sm font-bold">Pages</Link>
+            <Link to="/contact" className="text-[#737373] text-sm font-bold">Contact</Link>
           </div>
 
           {/* Right Icons */}
