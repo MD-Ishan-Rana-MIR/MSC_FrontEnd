@@ -1,10 +1,12 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/website/home/product-card/ProductCard";
+import { Link } from "react-router-dom";
 
 const Product = () => {
     const products = [
         {
+            id: 1,
             image: "/images/home/product/product-1.png",
             productName: "Classic White Shirt",
             categoryName: "Men",
@@ -12,6 +14,7 @@ const Product = () => {
             discountPrice: 35,
         },
         {
+            id: 2,
             image: "/images/home/product/product-2.png",
             productName: "Denim Jacket",
             categoryName: "Women",
@@ -19,6 +22,7 @@ const Product = () => {
             discountPrice: 60,
         },
         {
+            id: 3,
             image: "/images/home/product/product-3.png",
             productName: "Sports Sneakers",
             categoryName: "Shoes",
@@ -26,6 +30,7 @@ const Product = () => {
             discountPrice: 90,
         },
         {
+            id: 4,
             image: "/images/home/product/product-4.png",
             productName: "Leather Handbag",
             categoryName: "Accessories",
@@ -33,6 +38,7 @@ const Product = () => {
             discountPrice: 110,
         },
         {
+            id: 5,
             image: "/images/home/product/product-5.png",
             productName: "Casual T-Shirt",
             categoryName: "Men",
@@ -40,6 +46,7 @@ const Product = () => {
             discountPrice: 20,
         },
         {
+            id: 6,
             image: "/images/home/product/product-6.png",
             productName: "Summer Dress",
             categoryName: "Women",
@@ -47,6 +54,7 @@ const Product = () => {
             discountPrice: 50,
         },
         {
+            id: 7,
             image: "/images/home/product/product-7.png",
             productName: "Running Shoes",
             categoryName: "Shoes",
@@ -54,6 +62,7 @@ const Product = () => {
             discountPrice: 75,
         },
         {
+            id: 8,
             image: "/images/home/product/product-8.png",
             productName: "Wool Scarf",
             categoryName: "Accessories",
@@ -79,7 +88,9 @@ const Product = () => {
                 {/* Product Grid */}
                 <div className="mt-10 grid lg:gap-x-6 gap-x-4 lg:space-y-0 space-y-2.5 sm:grid-cols-2 lg:grid-cols-4">
                     {products.map((item, index) => (
-                        <ProductCard key={index} item={item} />
+                        <Link to={`/products/${item.id}`} key={index}>
+                            <ProductCard item={item} />
+                        </Link>
                     ))}
                 </div>
             </div>

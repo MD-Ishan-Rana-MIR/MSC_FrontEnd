@@ -44,7 +44,7 @@ const ProductDetails = () => {
                         <img
                             src={images[selectedImage]}
                             alt="Product main image"
-                            className="object-cover w-[200px] md:w-[300px] rounded-lg"
+                            className="object-cover w-[200px] md:w-[300px] rounded-lg hover:scale-105 transition"
                         />
                     </div>
                 </div>

@@ -77,7 +77,7 @@ export default function Navbar() {
             </Link>
 
             {/* Login */}
-            <Link to="/login" className="flex items-center text-blue-600 hover:underline">
+            <Link to="/auth" className="flex items-center text-blue-600 hover:underline">
               <User className="mr-1" size={16} /> Login
             </Link>
 
