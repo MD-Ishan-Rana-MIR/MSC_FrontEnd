@@ -6,13 +6,13 @@ const ProductCard = ({ key, item }) => {
         <div>
             <div
                 key={key}
-                className="  bg-white   transition"
+                className="  bg-white transition"
             >
                 <div className="p-4">
                     <img
                         src={item.image}
                         alt={item.productName}
-                        className="w-full  object-cover"
+                        className="w-full object-cover  hover:scale-105 transition rounded-lg"
                     />
                     <h2 className="font-bold lg:text-[16px] text-xs lg:mt-6 mt-3 text-center text-[#252B42]">
                         {item.productName}
