@@ -8,8 +8,10 @@ import ContactPage from "@/page/website/contact-page/ContactPage";
 import ProductDetails from "@/page/website/productDetails/ProductDetails";
 import ProductDetailsPage from "@/page/website/productDetails/ProductDetailsPage";
 import AuthPage from "@/page/website/login-page/AuthPage";
+import AdminLayout from "@/layout/AdminLayout";
 
 export const MainRouter = createBrowserRouter([
+    // main website routes
     {
         path: "/",
         element: <MainLayout />,
@@ -41,7 +43,13 @@ export const MainRouter = createBrowserRouter([
     {
         path: "/auth",
         element: <AuthPage />
+    },
+    // admin dashboard routes
+    {
+        path: "/dashboard",
+        element: <AdminLayout />
     }
+
 
 
 
