@@ -9,6 +9,7 @@ import ProductDetails from "@/page/website/productDetails/ProductDetails";
 import ProductDetailsPage from "@/page/website/productDetails/ProductDetailsPage";
 import AuthPage from "@/page/website/login-page/AuthPage";
 import AdminLayout from "@/layout/AdminLayout";
+import Wishlist from "@/page/website/wishlist/Wishlist";
 
 export const MainRouter = createBrowserRouter([
     // main website routes
@@ -36,6 +37,10 @@ export const MainRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <ContactPage />
+            },
+            {
+                path: "/wishlist",
+                element: <Wishlist />
             }
         ],
 
