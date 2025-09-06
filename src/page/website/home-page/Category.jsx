@@ -4,10 +4,10 @@ const Category = () => {
     return (
         <div className="bg-[#fafafa] lg:py-20 py-10">
             <div className="max-w-6xl mx-auto lg:px-0 px-4">
-                <h1 className="text-[#252B42] lg:text-2xl text-xl font-bold text-center">
-                    EDITOR’S PICK
+                <h1 className="text-orange-secondary lg:text-2xl text-xl font-bold text-center">
+                    EDITOR'S PICK
                 </h1>
-                <p className="text-center font-normal text-[#737373] lg:text-sm text-xs mt-2.5">
+                <p className="text-center font-normal text-orange-light lg:text-sm text-xs mt-2.5">
                     Problems trying to resolve the conflict between
                 </p>
 
@@ -20,7 +20,7 @@ const Category = () => {
                             src="/images/home/category/category-1.jpg"
                             alt="category-1"
                         />
-                        <button className="absolute bottom-6 ml-8 font-bold text-[16px] text-[#252B42] px-10 py-2 bg-white shadow-md">
+                        <button className="absolute bottom-6 ml-8 font-bold text-[16px] text-orange-secondary px-10 py-2 bg-white shadow-md hover:bg-orange-light transition-colors">
                             MEN
                         </button>
                     </div>
@@ -32,7 +32,7 @@ const Category = () => {
                             src="/images/home/category/category-2.jpg"
                             alt="category-2"
                         />
-                        <button className="absolute bottom-6 ml-8 font-bold text-[16px] text-[#252B42] px-10 py-2 bg-white shadow-md">
+                        <button className="absolute bottom-6 ml-8 font-bold text-[16px] text-orange-secondary px-10 py-2 bg-white shadow-md hover:bg-orange-light transition-colors">
                             WOMEN
                         </button>
                     </div>
@@ -46,7 +46,7 @@ const Category = () => {
                                 src="/images/home/category/category-3.jpg"
                                 alt="category-3"
                             />
-                            <button className="absolute bottom-4 ml-8  font-bold text-[14px] text-[#252B42] px-6 py-2 bg-white shadow-md">
+                            <button className="absolute bottom-4 ml-8  font-bold text-[14px] text-orange-secondary px-6 py-2 bg-white shadow-md hover:bg-orange-light transition-colors">
                                 ACCESSORIES
                             </button>
                         </div>
@@ -58,7 +58,7 @@ const Category = () => {
                                 src="/images/home/category/category-4.jpg"
                                 alt="category-4"
                             />
-                            <button className="absolute bottom-8 ml-8  font-bold text-[14px] text-[#252B42] px-6 py-2 bg-white shadow-md">
+                            <button className="absolute bottom-8 ml-8  font-bold text-[14px] text-orange-secondary px-6 py-2 bg-white shadow-md hover:bg-orange-light transition-colors">
                                 KIDS
                             </button>
                         </div>

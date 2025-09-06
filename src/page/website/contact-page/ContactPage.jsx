@@ -8,16 +8,16 @@ const ContactBanner = () => {
         <section className="max-w-6xl mx-auto  flex flex-col md:flex-row items-center justify-between px-6 md:px-16 lg:px-24 py-12">
             {/* Left Text Section */}
             <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-                <p className="text-sm uppercase text-gray-500 tracking-wide">
+                <p className="text-sm uppercase text-orange-light tracking-wide">
                     About Company
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-orange-secondary mb-4">
                     Contact Us
                 </h2>
-                <p className="text-gray-600 mb-6">
+                <p className="text-orange-light mb-6">
                     We know how large objects will act, but things on a small scale
                 </p>
-                <button className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-md shadow-md transition duration-200">
+                <button className="px-6 py-3 bg-orange-primary hover:bg-orange-dark text-white rounded-md shadow-md transition duration-200">
                     Get Quote Now
                 </button>
             </div>

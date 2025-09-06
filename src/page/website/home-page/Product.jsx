@@ -76,13 +76,13 @@ const Product = () => {
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center">
-                    <p className="text-[#737373] lg:text-xl text-sm font-normal">
+                    <p className="text-orange-light lg:text-xl text-sm font-normal">
                         Featured Products
                     </p>
-                    <h3 className="text-[#252B42] font-bold lg:text-2xl text-xl my-2.5">
+                    <h3 className="text-orange-secondary font-bold lg:text-2xl text-xl my-2.5">
                         BESTSELLER PRODUCTS
                     </h3>
-                    <p>Problems trying to resolve the conflict between</p>
+                    <p className="text-orange-light">Problems trying to resolve the conflict between</p>
                 </div>
 
                 {/* Product Grid */}

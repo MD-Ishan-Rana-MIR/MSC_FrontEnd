@@ -10,7 +10,7 @@ export default function Footer() {
             <div className=" bg-[#FAFAFA] " >
                 <div className=" max-w-6xl mx-auto flex flex-row justify-between py-14 lg:px-0 px-4  " >
                     <div>
-                        <h1 className=" text-[#252B42] text-2xl font-bold  " >Bandage</h1>
+                        <h1 className=" text-orange-primary text-2xl font-bold  " >Bandage</h1>
                     </div>
                     <div className=" flex flex-row items-center gap-x-3.5 " >
                         <Link to={``}>
@@ -50,63 +50,63 @@ export default function Footer() {
             <footer className=" my-12 ">
                 <div className="max-w-6xl mx-auto lg:px-0 px-4 ">
                     {/* Top: Logo + Socials */}
-                  
+
 
                     {/* Middle: Footer Links */}
                     <div className="grid grid-cols-3 lg:grid-cols-5 gap-6 mb-10">
                         <div>
-                            <h2 className=" text-[#252B42] text-[16px]  font-bold mb-5">Company Info</h2>
-                            <ul className="space-y-3 text-[#737373] text-sm font-bold  ">
-                                <li><Link to="/about">About Us</Link></li>
-                                <li><Link to="/career">Career</Link></li>
-                                <li><Link to="/hiring">We are hiring</Link></li>
-                                <li><Link to="/blog">Blog</Link></li>
+                            <h2 className=" text-orange-secondary text-[16px]  font-bold mb-5">Company Info</h2>
+                            <ul className="space-y-3 text-orange-light text-sm font-bold  ">
+                                <li><Link to="/about" className="hover:text-orange-primary transition-colors">About Us</Link></li>
+                                <li><Link to="/career" className="hover:text-orange-primary transition-colors">Career</Link></li>
+                                <li><Link to="/hiring" className="hover:text-orange-primary transition-colors">We are hiring</Link></li>
+                                <li><Link to="/blog" className="hover:text-orange-primary transition-colors">Blog</Link></li>
                             </ul>
                         </div>
 
                         <div>
-                            <h2 className=" text-[#252B42] text-[16px]  font-bold mb-5">Legal</h2>
-                            <ul className="space-y-3 text-[#737373] text-sm font-bold  ">
-                                <li><Link to="/privacy">Privacy Policy</Link></li>
-                                <li><Link to="/terms">Terms & Conditions</Link></li>
-                                <li><Link to="/security">Security</Link></li>
-                                <li><Link to="/cookies">Cookie Policy</Link></li>
+                            <h2 className=" text-orange-secondary text-[16px]  font-bold mb-5">Legal</h2>
+                            <ul className="space-y-3 text-orange-light text-sm font-bold  ">
+                                <li><Link to="/privacy" className="hover:text-orange-primary transition-colors">Privacy Policy</Link></li>
+                                <li><Link to="/terms" className="hover:text-orange-primary transition-colors">Terms & Conditions</Link></li>
+                                <li><Link to="/security" className="hover:text-orange-primary transition-colors">Security</Link></li>
+                                <li><Link to="/cookies" className="hover:text-orange-primary transition-colors">Cookie Policy</Link></li>
                             </ul>
                         </div>
 
                         <div>
-                            <h2 className=" text-[#252B42] text-[16px]  font-bold mb-5">Features</h2>
-                            <ul className="space-y-3 text-[#737373] text-sm font-bold  ">
-                                <li><Link to="/marketing">Business Marketing</Link></li>
-                                <li><Link to="/analytics">User Analytic</Link></li>
-                                <li><Link to="/chat">Live Chat</Link></li>
-                                <li><Link to="/support">Unlimited Support</Link></li>
+                            <h2 className=" text-orange-secondary text-[16px]  font-bold mb-5">Features</h2>
+                            <ul className="space-y-3 text-orange-light text-sm font-bold  ">
+                                <li><Link to="/marketing" className="hover:text-orange-primary transition-colors">Business Marketing</Link></li>
+                                <li><Link to="/analytics" className="hover:text-orange-primary transition-colors">User Analytic</Link></li>
+                                <li><Link to="/chat" className="hover:text-orange-primary transition-colors">Live Chat</Link></li>
+                                <li><Link to="/support" className="hover:text-orange-primary transition-colors">Unlimited Support</Link></li>
                             </ul>
                         </div>
 
                         <div>
-                            <h2 className=" text-[#252B42] text-[16px]  font-bold mb-5">Resources</h2>
-                            <ul className="space-y-3 text-[#737373] text-sm font-bold  ">
-                                <li><Link to="/ios-android">iOS & Android</Link></li>
-                                <li><Link to="/demo">Watch a Demo</Link></li>
-                                <li><Link to="/customers">Customers</Link></li>
-                                <li><Link to="/api">API</Link></li>
+                            <h2 className=" text-orange-secondary text-[16px]  font-bold mb-5">Resources</h2>
+                            <ul className="space-y-3 text-orange-light text-sm font-bold  ">
+                                <li><Link to="/ios-android" className="hover:text-orange-primary transition-colors">iOS & Android</Link></li>
+                                <li><Link to="/demo" className="hover:text-orange-primary transition-colors">Watch a Demo</Link></li>
+                                <li><Link to="/customers" className="hover:text-orange-primary transition-colors">Customers</Link></li>
+                                <li><Link to="/api" className="hover:text-orange-primary transition-colors">API</Link></li>
                             </ul>
                         </div>
 
                         <div>
-                            <h2 className=" text-[#252B42] text-[16px]  font-bold mb-5">Get In Touch</h2>
+                            <h2 className=" text-orange-secondary text-[16px]  font-bold mb-5">Get In Touch</h2>
                             <div className="flex flex-col sm:flex-row lg:space-y-0 space-y-4 ">
                                 <Input placeholder="Your Email" className="flex-1" />
-                                <Button className="bg-blue-500 text-white hover:bg-blue-600">
+                                <Button className="bg-orange-primary text-white hover:bg-orange-dark transition-colors">
                                     Subscribe
                                 </Button>
                             </div>
-                            <p className="text-[#737373] font-normal text-xs mt-2">Lore imp sum dolor Amit</p>
+                            <p className="text-orange-light font-normal text-xs mt-2">Lore imp sum dolor Amit</p>
                         </div>
                     </div>
 
-                    
+
                 </div>
             </footer>
         </>

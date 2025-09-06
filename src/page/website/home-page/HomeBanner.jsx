@@ -33,7 +33,7 @@ const HomeBanner = () => {
     };
 
     return (
-        <div className="relative w-full min-h-screen overflow-hidden bg-[#01b7dc]">
+        <div className="relative w-full min-h-screen overflow-hidden bg-orange-primary">
             {slides.map((slide, index) => (
                 <div
                     key={slide.id}
@@ -50,7 +50,7 @@ const HomeBanner = () => {
                             <p className="text-xs sm:text-sm lg:text-base mb-4 sm:mb-6">
                                 {slide.description}
                             </p>
-                            <Button className="bg-white text-green-500 hover:bg-gray-100 hover:text-green-600 w-fit mx-auto md:mx-0 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 text-xs sm:text-sm">
+                            <Button className="bg-white text-orange-primary hover:bg-gray-100 hover:text-orange-dark w-fit mx-auto md:mx-0 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 text-xs sm:text-sm transition-colors">
                                 SHOP NOW
                             </Button>
                         </div>

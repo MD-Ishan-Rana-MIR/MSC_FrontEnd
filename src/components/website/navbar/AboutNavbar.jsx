@@ -10,7 +10,7 @@ const AboutNavbar = () => {
             <div className="max-w-6xl mx-auto flex items-center justify-between px-4 lg:px-0 py-4">
                 {/* Logo */}
                 <Link
-                    className="text-[#252B42] font-bold lg:text-2xl text-xl"
+                    className="text-orange-primary font-bold lg:text-2xl text-xl"
                     to={"/"}
                 >
                     Bandage
@@ -18,18 +18,18 @@ const AboutNavbar = () => {
 
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex">
-                    <ul className="flex flex-row items-center justify-between text-[#737373] font-bold gap-x-6">
+                    <ul className="flex flex-row items-center justify-between text-orange-light font-bold gap-x-6">
                         <li>
-                            <Link to={"/"}>Home</Link>
+                            <Link to={"/"} className="hover:text-orange-primary transition-colors">Home</Link>
                         </li>
                         <li>
-                            <Link to={"/product"}>Product</Link>
+                            <Link to={"/product"} className="hover:text-orange-primary transition-colors">Product</Link>
                         </li>
                         <li>
-                            <Link to={"/price"}>Pricing</Link>
+                            <Link to={"/price"} className="hover:text-orange-primary transition-colors">Pricing</Link>
                         </li>
                         <li>
-                            <Link to={"/contact"}>Contact</Link>
+                            <Link to={"/contact"} className="hover:text-orange-primary transition-colors">Contact</Link>
                         </li>
                     </ul>
                 </nav>
@@ -37,13 +37,13 @@ const AboutNavbar = () => {
                 {/* Buttons */}
                 <div className="hidden md:flex items-center gap-x-4 lg:gap-x-9">
                     <Link
-                        className="text-[#23A6F0] text-sm font-bold"
+                        className="text-orange-primary text-sm font-bold hover:text-orange-dark transition-colors"
                         to={"/login"}
                     >
                         Login
                     </Link>
                     <Link
-                        className="px-4 py-2 lg:px-6 rounded-[5px] lg:py-3.5 text-sm font-bold text-white bg-[#23A6F0] gap-x-2 flex items-center"
+                        className="px-4 py-2 lg:px-6 rounded-[5px] lg:py-3.5 text-sm font-bold text-white bg-orange-primary hover:bg-orange-dark gap-x-2 flex items-center transition-colors"
                         to={"/become-member"}
                     >
                         Become a member
@@ -67,7 +67,7 @@ const AboutNavbar = () => {
                 {/* Mobile Hamburger */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden text-gray-700 cursor-pointer "
+                    className="md:hidden text-gray-700 hover:text-orange-primary cursor-pointer transition-colors"
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
@@ -76,22 +76,22 @@ const AboutNavbar = () => {
             {/* Mobile Menu */}
             {isOpen && (
                 <div className="md:hidden px-4 pb-4">
-                    <ul className="flex flex-col gap-y-3 text-[#737373] font-bold">
+                    <ul className="flex flex-col gap-y-3 text-orange-light font-bold">
                         <li>
-                            <Link to={"/"} onClick={() => setIsOpen(false)}>Home</Link>
+                            <Link to={"/"} onClick={() => setIsOpen(false)} className="hover:text-orange-primary transition-colors">Home</Link>
                         </li>
                         <li>
-                            <Link to={"/product"} onClick={() => setIsOpen(false)}>Product</Link>
+                            <Link to={"/product"} onClick={() => setIsOpen(false)} className="hover:text-orange-primary transition-colors">Product</Link>
                         </li>
                         <li>
-                            <Link to={"/price"} onClick={() => setIsOpen(false)}>Pricing</Link>
+                            <Link to={"/price"} onClick={() => setIsOpen(false)} className="hover:text-orange-primary transition-colors">Pricing</Link>
                         </li>
                         <li>
-                            <Link to={"/contact"} onClick={() => setIsOpen(false)}>Contact</Link>
+                            <Link to={"/contact"} onClick={() => setIsOpen(false)} className="hover:text-orange-primary transition-colors">Contact</Link>
                         </li>
                         <li>
                             <Link
-                                className="text-[#23A6F0] text-sm font-bold"
+                                className="text-orange-primary text-sm font-bold hover:text-orange-dark transition-colors"
                                 to={"/login"}
                                 onClick={() => setIsOpen(false)}
                             >
@@ -100,7 +100,7 @@ const AboutNavbar = () => {
                         </li>
                         <li>
                             <Link
-                                className="px-4 py-2 rounded-[5px] text-sm font-bold text-white bg-[#23A6F0] flex items-center gap-x-2"
+                                className="px-4 py-2 rounded-[5px] text-sm font-bold text-white bg-orange-primary hover:bg-orange-dark flex items-center gap-x-2 transition-colors"
                                 to={"/become-member"}
                                 onClick={() => setIsOpen(false)}
                             >
