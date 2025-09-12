@@ -23,7 +23,7 @@ const AdminLayout = () => {
       id: 2,
       icon: <MdDashboard />,
       text: "Poduct Management",
-      path: "/dashboard/admin-list",
+      path: "/dashboard/category",
       sublink: [
         {
           id: 1,
@@ -31,9 +31,27 @@ const AdminLayout = () => {
           path: "/dashboard/admin-list",
         },
         {
-          id: 1,
+          id: 2,
           text: "Add New Product",
           path: "/dashboard/asdasd"
+        },
+      ]
+    },
+      {
+      id: 2,
+      icon: <MdDashboard />,
+      text: "Category",
+      path: "/dashboard/admin-list",
+      sublink: [
+        {
+          id: 1,
+          text: "Category List",
+          path: "/dashboard/category-list",
+        },
+        {
+          id: 2,
+          text: "Add Category",
+          path: "/dashboard/category"
         },
       ]
     },

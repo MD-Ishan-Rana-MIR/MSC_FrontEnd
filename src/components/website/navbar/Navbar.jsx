@@ -26,6 +26,32 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const [token, setToken] = useState(null);
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const userToken = localStorage.getItem("user-token");
+    if (userToken) {
+      setToken(userToken); // ✅ set from localStorage
+    }
+  }, []); // ✅ run only once on mount
+
+  console.log("state token:", token);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <nav className="bg-white shadow-md relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,9 +103,49 @@ export default function Navbar() {
             </Link>
 
             {/* Login */}
-            <Link to="/auth" className="flex items-center text-orange-primary hover:underline transition-colors">
-              <User className="mr-1" size={16} /> Login
-            </Link>
+
+            <div className="relative" ref={menuRef}>
+              {token ? (
+                <button
+                  onClick={() => setOpen((prev) => !prev)}
+                  className="flex cursor-pointer items-center text-red-500 hover:underline transition-colors"
+                >
+                  <User className="mr-1 cursor-pointer " size={16} /> Account
+                </button>
+              ) : (
+                <Link
+                  to="/auth"
+                  className="flex items-center text-orange-primary hover:underline transition-colors"
+                >
+                  <User className="mr-1" size={16} /> Login
+                </Link>
+              )}
+
+              {/* Dropdown */}
+              {token && open && (
+                <div className="absolute z-50 right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg py-2">
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Profile
+                  </Link>
+                  <Link
+                    to="/orders"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Orders
+                  </Link>
+                  <button
+                    // onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+
 
             {/* Mobile menu button */}
             <button

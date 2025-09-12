@@ -9,6 +9,15 @@ import ProductDetails from "@/page/website/productDetails/ProductDetails";
 import ProductDetailsPage from "@/page/website/productDetails/ProductDetailsPage";
 import AuthPage from "@/page/website/login-page/AuthPage";
 import AdminLayout from "@/layout/AdminLayout";
+import RegistrationPage from "@/page/website/login-page/RegistrationPage";
+import EmailVerify from "@/page/website/forgot-password/EmailVerify";
+import OtpVerifyFrom from "@/page/website/forgot-password/OtpVerifyFrom";
+import NewPasswordSet from "@/page/website/forgot-password/NewPasswordSet";
+import PorfilePage from "@/page/website/profile-page/PorfilePage";
+import UserProtectedRouter from "@/page/protected-route/UserProtectedRouter";
+import CartPage from "@/page/website/cart-page/CartPage";
+import WishList from "@/page/website/wish-page/WishList";
+import ManageCategory from "@/page/admin/category/ManageCategory";
 
 export const MainRouter = createBrowserRouter([
     // main website routes
@@ -36,7 +45,20 @@ export const MainRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <ContactPage />
+            },
+            {
+                path : "/wishlist",
+                element : <UserProtectedRouter><WishList></WishList></UserProtectedRouter>
+            },
+            {
+                path: "/profile",
+                element: <UserProtectedRouter><PorfilePage></PorfilePage></UserProtectedRouter>
+            },
+            {
+                path : "/cart",
+                element : <UserProtectedRouter><CartPage></CartPage> </UserProtectedRouter>
             }
+
         ],
 
     },
@@ -44,11 +66,35 @@ export const MainRouter = createBrowserRouter([
         path: "/auth",
         element: <AuthPage />
     },
+    {
+        path: "/registration",
+        element: <RegistrationPage />
+    },
+
+
     // admin dashboard routes
     {
         path: "/dashboard",
-        element: <AdminLayout />
-    }
+        element: <AdminLayout />,
+        children : [
+            {
+                path : "category-list",
+                element : <ManageCategory></ManageCategory>
+            }
+        ]
+    },
+    {
+        path: "/forgot-password",
+        element: <EmailVerify></EmailVerify>
+    },
+    {
+        path: "/otp-verify",
+        element: <OtpVerifyFrom></OtpVerifyFrom>
+    },
+    {
+        path: "/new-password-set",
+        element: <NewPasswordSet></NewPasswordSet>
+    },
 
 
 
