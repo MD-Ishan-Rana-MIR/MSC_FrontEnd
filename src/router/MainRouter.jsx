@@ -18,6 +18,7 @@ import UserProtectedRouter from "@/page/protected-route/UserProtectedRouter";
 import CartPage from "@/page/website/cart-page/CartPage";
 import WishList from "@/page/website/wish-page/WishList";
 import ManageCategory from "@/page/admin/category/ManageCategory";
+import AdminLogin from "@/page/admin/admin-login/AdminLogin";
 
 export const MainRouter = createBrowserRouter([
     // main website routes
@@ -95,6 +96,11 @@ export const MainRouter = createBrowserRouter([
         path: "/new-password-set",
         element: <NewPasswordSet></NewPasswordSet>
     },
+
+    {
+        path : "/admin-login",
+        element : <AdminLogin></AdminLogin>
+    }
 
 
 
