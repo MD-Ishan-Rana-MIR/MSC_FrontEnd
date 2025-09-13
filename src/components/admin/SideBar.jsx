@@ -39,10 +39,8 @@ const SideBar = ({ sidebar, open, setOpen }) => {
     <>
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black/30 backdrop-blur-sm transition-all duration-300 ease-in-out ${
-          open ? "opacity-100 visible" : "opacity-0 invisible"
-        } xl:hidden z-50`}
-        onClick={() => setOpen(false)}
+        className={` bg-black/30 backdrop-blur-sm transition-all duration-300 ease-in-out  xl:hidden z-50`}
+        
       ></div>
 
       {/* Sidebar */}
@@ -74,7 +72,6 @@ const SideBar = ({ sidebar, open, setOpen }) => {
                 to={item?.path}
                 onClick={() => {
                   setActiveParentIndex(null);
-                  setOpen(false);
                 }}
                 className={`flex items-center gap-3 px-4 py-2 rounded-lg text-base font-medium transition-colors duration-200 ${
                   isActive(item?.activePaths)
@@ -127,7 +124,6 @@ const SideBar = ({ sidebar, open, setOpen }) => {
                             ? "text-black font-medium bg-[#F0F4FF]"
                             : "text-[#5A5C5F] font-normal hover:bg-[#F0F4FF]"
                         }`}
-                        onClick={() => setOpen(false)}
                       >
                         {value?.text}
                       </Link>

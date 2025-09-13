@@ -7,7 +7,7 @@ import CommonNavbar from "@/components/admin/CommonNavbar";
 
 
 const AdminLayout = () => {
-  const [Open, setOpen] = useState(false);
+  const [Open, setOpen] = useState(true);
 
   const sideBar = [
     {
@@ -26,18 +26,19 @@ const AdminLayout = () => {
       path: "/dashboard/category",
       sublink: [
         {
-          id: 1,
-          text: "Product List",
-          path: "/dashboard/admin-list",
-        },
-        {
           id: 2,
           text: "Add New Product",
           path: "/dashboard/asdasd"
         },
+        {
+          id: 1,
+          text: "Product List",
+          path: "/dashboard/admin-list",
+        },
+        
       ]
     },
-      {
+    {
       id: 2,
       icon: <MdDashboard />,
       text: "Category",
@@ -67,11 +68,15 @@ const AdminLayout = () => {
     <>
       <ScrollRestoration />
       <div className="flex  h-screen min-h-screen w-full">
-        <SideBar open={Open} setOpen={setOpen} sidebar={sideBar} />
-        <div className="flex-1 bg-dark text-white flex flex-col overflow-auto custom-scrollbar">
+        <div className="w-[320px] border">
+          <SideBar open={Open} setOpen={setOpen} sidebar={sideBar} />
+        </div>
+        <div className="flex-1 bg-dark  flex flex-col overflow-auto custom-scrollbar">
           <div className=" flex flex-col lg:gap-10 gap-5 lg:py-6 py-3 lg:px-[30px] px-2.5 sm:px-5">
             <CommonNavbar open={Open} setOpen={setOpen} />
-            <Outlet />
+            <div className="">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>

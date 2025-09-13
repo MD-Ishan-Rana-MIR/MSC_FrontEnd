@@ -13,7 +13,7 @@ const CommonNavbar = ({ open, setOpen }) => {
           onClick={() => setOpen(!open)}
           className="xlg:hidden block cursor-pointer"
         >
-          <GiHamburgerMenu color="black" size={26} />
+          {/* <GiHamburgerMenu color="black" size={26} /> */}
         </span>
         <div className="flex items-center gap-4">
           <p className=" text-black text-3xl font-bold">Admin Header</p>
