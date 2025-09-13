@@ -19,6 +19,7 @@ import CartPage from "@/page/website/cart-page/CartPage";
 import WishList from "@/page/website/wish-page/WishList";
 import ManageCategory from "@/page/admin/category/ManageCategory";
 import AdminLogin from "@/page/admin/admin-login/AdminLogin";
+import Wishlist from "@/page/website/wishlist/Wishlist";
 
 export const MainRouter = createBrowserRouter([
     // main website routes
@@ -46,6 +47,10 @@ export const MainRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <ContactPage />
+            },
+            {
+                path: "/wishlist",
+                element: <Wishlist />
             },
             {
                 path : "/wishlist",
