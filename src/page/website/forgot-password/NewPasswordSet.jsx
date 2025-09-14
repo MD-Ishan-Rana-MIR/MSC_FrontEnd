@@ -1,4 +1,4 @@
-import { useNewPasswordSetMutation } from "@/router/auth-api/authApi";
+import { useNewPasswordSetMutation } from "@/redux/auth-api/authApi";
 import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 

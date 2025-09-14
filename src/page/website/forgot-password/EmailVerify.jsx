@@ -1,4 +1,4 @@
-import { useUserEmailVerifyMutation } from "@/router/auth-api/authApi";
+import { useUserEmailVerifyMutation } from "@/redux/auth-api/authApi";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
-import { useUserRegistrationMutation } from "@/router/auth-api/authApi";
+import { useUserRegistrationMutation } from "@/redux/auth-api/authApi";
 
 export default function RegistrationPage() {
     const [formData, setFormData] = useState({
