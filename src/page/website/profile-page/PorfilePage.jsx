@@ -1,4 +1,4 @@
-import { useUserProfileQuery } from "@/router/auth-api/authApi";
+import { useUserProfileQuery } from "@/redux/auth-api/authApi";
 import React, { useEffect, useState } from "react";
 
 export default function ProfilePage() {

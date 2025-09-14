@@ -52,7 +52,7 @@ const AdminLayout = () => {
         {
           id: 2,
           text: "Add Category",
-          path: "/dashboard/category"
+          path: "/dashboard/add-category"
         },
       ]
     },

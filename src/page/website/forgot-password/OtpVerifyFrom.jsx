@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { useUserEmailVerifyMutation, useUserOtpVerifyMutation } from "@/router/auth-api/authApi";
+import { useUserEmailVerifyMutation, useUserOtpVerifyMutation } from "@/redux/auth-api/authApi";
 
 export default function OtpVerifyFrom() {
     const location = useLocation();

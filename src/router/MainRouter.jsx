@@ -20,6 +20,7 @@ import WishList from "@/page/website/wish-page/WishList";
 import ManageCategory from "@/page/admin/category/ManageCategory";
 import AdminLogin from "@/page/admin/admin-login/AdminLogin";
 import Wishlist from "@/page/website/wishlist/Wishlist";
+import AddCategoryPage from "@/page/admin/category/AddCategoryPage";
 
 export const MainRouter = createBrowserRouter([
     // main website routes
@@ -86,6 +87,10 @@ export const MainRouter = createBrowserRouter([
             {
                 path : "category-list",
                 element : <ManageCategory></ManageCategory>
+            },
+            {
+                path : "add-category",
+                element : <AddCategoryPage></AddCategoryPage>
             }
         ]
     },
