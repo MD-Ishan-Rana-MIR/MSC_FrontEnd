@@ -1,9 +1,10 @@
-import { deleteAlert } from "@/helper/updateAlert";
+import { deleteAlert } from "@/helper/deleteAlert";
 import { useDeleteCategoryMutation, useGetAllCategoriesQuery } from "@/redux/admin/category/categoryApi";
 import { Edit } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ManageCategory() {
   const { data, isLoading } = useGetAllCategoriesQuery();
@@ -21,8 +22,10 @@ export default function ManageCategory() {
     }
   }, [data]);
 
-  const handleUpdate = (cat) => {
-    console.log("Update category:", cat);
+  const navigate = useNavigate();
+
+  const handleUpdate = (id) => {
+    navigate(`/update-category/${id}`)
   };
 
   const handleDelete = async (id) => {
@@ -97,12 +100,14 @@ export default function ManageCategory() {
                   {new Date(cat.createdAt).toLocaleDateString()}
                 </td>
                 <td className="px-6 py-4 flex items-center justify-center gap-3">
+                  <Link to={`/dashboard/category-update/${cat?._id}`}>
                   <button
-                    onClick={() => handleUpdate(cat)}
+                    
                     className="px-4 cursor-pointer py-2 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow"
                   >
                     <Edit />
                   </button>
+                  </Link>
                   <button
                     onClick={() => handleDelete(cat._id)}
                     className="px-4 py-2 cursor-pointer text-sm bg-red-500 hover:bg-red-600 text-white rounded-lg shadow"

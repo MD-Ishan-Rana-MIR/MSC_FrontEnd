@@ -24,6 +24,14 @@ export const categorySlice = createApi({
       invalidatesTags: ["Category"], // refetch list after add
     }),
 
+    singleCategory: builder.query({
+      query: (id) => ({
+        url: `single-category/${id}`,
+        method: "GET"
+      }),
+      invalidatesTags : ["Category"]
+    }),
+
     // ✅ Get All Categories
     getAllCategories: builder.query({
       query: () => `all-category`,
@@ -32,8 +40,8 @@ export const categorySlice = createApi({
 
     // ✅ Update Category
     updateCategory: builder.mutation({
-      query: ({ id, ...payload }) => ({
-        url: `update-category/${id}`,
+      query: ({ id,payload }) => ({
+        url: `category-update/${id}`,
         method: "PUT",
         body: payload,
       }),
@@ -56,4 +64,6 @@ export const {
   useGetAllCategoriesQuery,
   useUpdateCategoryMutation,
   useDeleteCategoryMutation,
+  useSingleCategoryQuery
+  
 } = categorySlice;
