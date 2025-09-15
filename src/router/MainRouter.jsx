@@ -20,6 +20,7 @@ import AdminLogin from "@/page/admin/admin-login/AdminLogin";
 import AddCategoryPage from "@/page/admin/category/AddCategoryPage";
 import CategoryUpdate from "@/page/admin/category/CategoryUpdate";
 import ProfilePage from "@/page/website/profile-page/PorfilePage";
+import AddProduct from "@/page/admin/product/AddProduct";
 
 export const MainRouter = createBrowserRouter([
   // main website routes
@@ -99,6 +100,10 @@ export const MainRouter = createBrowserRouter([
         path: "category-update/:id",
         element: <CategoryUpdate />,
       },
+      {
+        path: "add-product",
+        element: <AddProduct />
+      }
     ],
   },
   {
