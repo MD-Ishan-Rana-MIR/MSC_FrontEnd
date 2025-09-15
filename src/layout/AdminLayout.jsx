@@ -28,7 +28,7 @@ const AdminLayout = () => {
         {
           id: 2,
           text: "Add New Product",
-          path: "/dashboard/asdasd"
+          path: "/dashboard/add-product"
         },
         {
           id: 1,
