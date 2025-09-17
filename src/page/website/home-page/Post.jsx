@@ -1,6 +1,8 @@
 import React from 'react'
 
 import PostCard from '@/components/website/home/PostCard';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
 const Post = () => {
     const blogData = [
         {
@@ -28,6 +30,18 @@ const Post = () => {
             "totalComment": 20
         }
     ]
+    const axiosPublic = useAxiosPublic();
+
+    const { data: blogs } = useQuery({
+        queryKey: ['blogs'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/all-blog')
+            return res.data;
+        }
+    })
+
+    console.log(blogs)
+
     return (
         <div className=' max-w-6xl mx-auto lg:my-20 my-12 lg:px-0 px-4 ' >
             <div>
@@ -41,7 +55,7 @@ const Post = () => {
             <div>
                 <div className="max-w-6xl mx-auto py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {blogData.map((blog, index) => (
-                        <PostCard key={index} blog={blog}  />
+                        <PostCard key={index} blog={blog} />
                     ))}
                 </div>
             </div>
