@@ -68,6 +68,7 @@ export default function Navbar() {
             <Link to="/products" className="text-orange-secondary text-sm font-bold hover:text-orange-primary transition-colors">Shop</Link>
             <Link to="/about" className="text-orange-secondary text-sm font-bold hover:text-orange-primary transition-colors">About</Link>
             <Link to="/contact" className="text-orange-secondary text-sm font-bold hover:text-orange-primary transition-colors">Contact</Link>
+            <Link to="/new-arrival" className="text-orange-secondary text-sm font-bold hover:text-orange-primary transition-colors">New Arrival</Link>
           </div>
 
           {/* Right Icons */}
