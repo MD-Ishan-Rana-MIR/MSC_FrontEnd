@@ -27,6 +27,7 @@ import BrandUpdate from "@/page/admin/brand/BrandUpdate";
 import ProductList from "@/page/admin/product/ProductList";
 import ProductUpload from "@/page/admin/product/ProductUpload";
 import AddProduct from "@/page/admin/product/AddProduct";
+import NewArrival from "@/page/website/new-arrival/NewArrival";
 
 
 export const MainRouter = createBrowserRouter([
@@ -50,6 +51,10 @@ export const MainRouter = createBrowserRouter([
       {
         path: "about",
         element: <AboutPage />,
+      },
+      {
+        path: "new-arrival",
+        element: <NewArrival />
       },
       {
         path: "contact",
@@ -111,25 +116,25 @@ export const MainRouter = createBrowserRouter([
 
       // brand
       {
-        path : "brand-list",
-        element : <BrandListPage></BrandListPage>
+        path: "brand-list",
+        element: <BrandListPage></BrandListPage>
       },
       {
-        path : "add-brand",
-        element : <AddBrand></AddBrand>
+        path: "add-brand",
+        element: <AddBrand></AddBrand>
       },
       {
-        path : "brand-update/:id",
-        element : <BrandUpdate></BrandUpdate>
+        path: "brand-update/:id",
+        element: <BrandUpdate></BrandUpdate>
       },
       // product 
       {
-        path : "product-list",
-        element : <ProductList></ProductList>
+        path: "product-list",
+        element: <ProductList></ProductList>
       },
       {
-        path : "add-product",
-        element : <ProductUpload></ProductUpload>
+        path: "add-product",
+        element: <ProductUpload></ProductUpload>
       },
 
       {
