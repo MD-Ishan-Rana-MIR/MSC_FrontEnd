@@ -26,7 +26,6 @@ import BrandListPage from "@/page/admin/brand/BrandListPage";
 import BrandUpdate from "@/page/admin/brand/BrandUpdate";
 import ProductList from "@/page/admin/product/ProductList";
 import ProductUpload from "@/page/admin/product/ProductUpload";
-=======
 import AddProduct from "@/page/admin/product/AddProduct";
 
 
@@ -131,6 +130,7 @@ export const MainRouter = createBrowserRouter([
       {
         path : "add-product",
         element : <ProductUpload></ProductUpload>
+      },
 
       {
         path: "add-product",
