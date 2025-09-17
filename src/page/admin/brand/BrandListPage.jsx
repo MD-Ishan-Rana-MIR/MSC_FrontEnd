@@ -1,7 +1,7 @@
 import { deleteAlert } from "@/helper/deleteAlert";
 import {
   useDeleteBrandMutation,
-  useGetAlllBrandQuery,
+  useGetAllBrandQuery,
 } from "@/redux/admin/brand/brandApi";
 import { Edit } from "lucide-react";
 import React, { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ import { MdDelete } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function BrandListPage() {
-  const { data, isLoading } = useGetAlllBrandQuery();
+  const { data, isLoading } = useGetAllBrandQuery();
 
   console.log(`-------data---------`,data)
 

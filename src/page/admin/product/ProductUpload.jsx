@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import {
-  useGetAlllBrandQuery,
-} from "@/redux/admin/brand/brandApi";
 import { uploadImg } from "@/img-upload/UploadImage";
 import toast, { Toaster } from "react-hot-toast";
 import { useGetAllCategoriesQuery } from "@/redux/admin/category/categoryApi";
 import { useAddProductMutation } from "@/redux/admin/product/productApi";
+import { useGetAllBrandQuery } from "@/redux/admin/brand/brandApi";
 
 const ProductUpload = () => {
   const navigate = useNavigate();
 
   const { data: categories } =useGetAllCategoriesQuery();
-  const { data: brands } = useGetAlllBrandQuery();
+  const { data: brands } = useGetAllBrandQuery();
 
   const [createProduct] = useAddProductMutation();
 

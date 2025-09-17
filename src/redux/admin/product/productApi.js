@@ -1,11 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
-export const productSlice = createApi({
-
 export const productApiSlice = createApi({
-
   reducerPath: "productApi",
+
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_BASEURL,
     prepareHeaders: (headers) => {
@@ -17,73 +14,35 @@ export const productApiSlice = createApi({
     },
   }),
 
-  tagTypes: ["Product"], // ✅ added tags
-  endpoints: (builder) => ({
-    // ✅ Add Category
-
   tagTypes: ["Product"],
-  endpoints: (builder) => ({
-    // Add Product
 
+  endpoints: (builder) => ({
+    // ✅ Add Product
     addProduct: builder.mutation({
       query: (payload) => ({
-        url: `product-upload`,
+        url: `product-upload`, // adjust to your backend route
         method: "POST",
         body: payload,
       }),
-
-      invalidatesTags: ["Proeduct"], // refetch list after add
-    }),
-
-    singleProduct: builder.query({
-
       invalidatesTags: ["Product"],
     }),
 
-    // Get All Products
+    // ✅ Get All Products
     getAllProducts: builder.query({
       query: () => `all-products`,
       providesTags: ["Product"],
     }),
 
-    // Get Single Product
+    // ✅ Get Single Product
     getSingleProduct: builder.query({
-
       query: (id) => ({
         url: `single-product/${id}`,
-        method: "GET"
+        method: "GET",
       }),
-
-      invalidatesTags : ["Product"]
+      providesTags: ["Product"],
     }),
 
-    // ✅ Get All Categories
-    allProduct: builder.query({
-      query: () => `all-category`,
-      providesTags: ["Product"], // attaches tag
-    }),
-
-    // ✅ Update Category
-    updateCategory: builder.mutation({
-      query: ({ id,payload }) => ({
-        url: `category-update/${id}`,
-        method: "PUT",
-        body: payload,
-      }),
-      invalidatesTags: ["Category"], // refetch list after update
-    }),
-
-    // ✅ Delete Category
-    deleteCategory: builder.mutation({
-      query: (id) => ({
-        url: `category-deleete/${id}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: ["Category"], // refetch list after delete
-      providesTags: ["Product"]
-    }),
-
-    // Update Product
+    // ✅ Update Product
     updateProduct: builder.mutation({
       query: ({ id, payload }) => ({
         url: `product-update/${id}`,
@@ -93,24 +52,21 @@ export const productApiSlice = createApi({
       invalidatesTags: ["Product"],
     }),
 
-    // Delete Product
+    // ✅ Delete Product
     deleteProduct: builder.mutation({
       query: (id) => ({
         url: `product-delete/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Product"],
-
     }),
   }),
 });
 
 export const {
   useAddProductMutation,
-
-  useSingleProductQuery,
-  useUpdateCategoryMutation,
-  useDeleteCategoryMutation,
-  useAllProductQuery
-  
-} = productSlice;
+  useGetAllProductsQuery,
+  useGetSingleProductQuery,
+  useUpdateProductMutation,
+  useDeleteProductMutation,
+} = productApiSlice;

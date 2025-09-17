@@ -4,10 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAddProductMutation } from '@/redux/admin/product/productApi';
-import { useGetAllCategoriesQuery } from '@/redux/admin/category/categoryApi';
-import { useGetAllBrandsQuery } from '@/redux/admin/brand/brandApi';
 import { uploadImg } from '@/img-upload/UploadImage';
 import { updateAlert } from '@/helper/updateAlert';
+import { useGetAllBrandQuery } from '@/redux/admin/brand/brandApi';
 
 const AddProduct = () => {
     const [productImages, setProductImages] = useState({
@@ -27,7 +26,7 @@ const AddProduct = () => {
 
   
 
-    const { data: brands = [] } = useGetAllBrandsQuery();
+    const { data: brands = [] } = useGetAllBrandQuery();
 
     const handleImageUpload = async (file, imageKey) => {
         if (!file) return;
