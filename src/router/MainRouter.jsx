@@ -23,6 +23,8 @@ import ProfilePage from "@/page/website/profile-page/PorfilePage";
 import AddBrand from "@/page/admin/brand/AddBrand";
 import BrandListPage from "@/page/admin/brand/BrandListPage";
 import BrandUpdate from "@/page/admin/brand/BrandUpdate";
+import ProductList from "@/page/admin/product/ProductList";
+import ProductUpload from "@/page/admin/product/ProductUpload";
 
 export const MainRouter = createBrowserRouter([
   // main website routes
@@ -115,6 +117,15 @@ export const MainRouter = createBrowserRouter([
       {
         path : "brand-update/:id",
         element : <BrandUpdate></BrandUpdate>
+      },
+      // product 
+      {
+        path : "product-list",
+        element : <ProductList></ProductList>
+      },
+      {
+        path : "add-product",
+        element : <ProductUpload></ProductUpload>
       }
     ],
   },
