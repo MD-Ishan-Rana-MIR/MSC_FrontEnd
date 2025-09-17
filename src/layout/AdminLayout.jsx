@@ -56,6 +56,42 @@ const AdminLayout = () => {
         },
       ]
     },
+    {
+      id: 3,
+      icon: <MdDashboard />,
+      text: "Brand",
+      path: "/dashboard/admin-list",
+      sublink: [
+        {
+          id: 1,
+          text: "Brand List",
+          path: "/dashboard/brand-list",
+        },
+        {
+          id: 2,
+          text: "Upload Brand",
+          path: "/dashboard/add-brand"
+        },
+      ]
+    },
+        {
+      id: 4,
+      icon: <MdDashboard />,
+      text: "Product",
+      path: "/dashboard/admin-list",
+      sublink: [
+        {
+          id: 1,
+          text: "Product List",
+          path: "/dashboard/product-list",
+        },
+        {
+          id: 2,
+          text: "Upload Product",
+          path: "/dashboard/add-product"
+        },
+      ]
+    },
   ];
   const location = useLocation();
   useEffect(() => {

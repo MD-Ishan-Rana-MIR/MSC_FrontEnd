@@ -1,7 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+
+export const brandSlice = createApi({
+  reducerPath: "BrandApi",
+
 export const brandApiSlice = createApi({
   reducerPath: "brandApi",
+
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_BASEURL,
     prepareHeaders: (headers) => {
@@ -12,6 +17,37 @@ export const brandApiSlice = createApi({
       return headers;
     },
   }),
+
+  tagTypes: ["Brand"], // ✅ added tags
+  endpoints: (builder) => ({
+    // ✅ Add Category
+    addBrand: builder.mutation({
+      query: (formData) => ({
+        url: `brand-create`,
+        method: "POST",
+        body: formData,
+      }),
+      invalidatesTags: ["Brand"], // refetch list after add
+    }),
+
+    singleBrand: builder.query({
+      query: (id) => ({
+        url: `single-brand/${id}`,
+        method: "GET"
+      }),
+      invalidatesTags : ["Brand"]
+    }),
+
+    // ✅ Get All Categories
+    getAlllBrand: builder.query({
+      query: () => `all-brand`,
+      providesTags: ["Brand"], // attaches tag
+    }),
+
+    // ✅ Update Category
+    updateBrand: builder.mutation({
+      query: ({ id,payload }) => ({
+
   tagTypes: ["Brand"],
   endpoints: (builder) => ({
     // Get All Brands
@@ -33,27 +69,41 @@ export const brandApiSlice = createApi({
     // Update Brand
     updateBrand: builder.mutation({
       query: ({ id, payload }) => ({
+
         url: `brand-update/${id}`,
         method: "PUT",
         body: payload,
       }),
+
+      invalidatesTags: ["Brand"], // refetch list after update
+    }),
+
+    // ✅ Delete Category
+
       invalidatesTags: ["Brand"],
     }),
 
     // Delete Brand
+
     deleteBrand: builder.mutation({
       query: (id) => ({
         url: `brand-delete/${id}`,
         method: "DELETE",
       }),
+
       invalidatesTags: ["Brand"],
+
     }),
   }),
 });
 
 export const {
-  useGetAllBrandsQuery,
+
   useAddBrandMutation,
+  useGetAlllBrandQuery,
   useUpdateBrandMutation,
   useDeleteBrandMutation,
-} = brandApiSlice;
+  useSingleBrandQuery
+  
+} = brandSlice;
+

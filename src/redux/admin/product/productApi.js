@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+
+export const productSlice = createApi({
+
 export const productApiSlice = createApi({
+
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_BASEURL,
@@ -12,15 +16,27 @@ export const productApiSlice = createApi({
       return headers;
     },
   }),
+
+  tagTypes: ["Product"], // ✅ added tags
+  endpoints: (builder) => ({
+    // ✅ Add Category
+
   tagTypes: ["Product"],
   endpoints: (builder) => ({
     // Add Product
+
     addProduct: builder.mutation({
       query: (payload) => ({
         url: `product-upload`,
         method: "POST",
         body: payload,
       }),
+
+      invalidatesTags: ["Proeduct"], // refetch list after add
+    }),
+
+    singleProduct: builder.query({
+
       invalidatesTags: ["Product"],
     }),
 
@@ -32,10 +48,38 @@ export const productApiSlice = createApi({
 
     // Get Single Product
     getSingleProduct: builder.query({
+
       query: (id) => ({
         url: `single-product/${id}`,
         method: "GET"
       }),
+
+      invalidatesTags : ["Product"]
+    }),
+
+    // ✅ Get All Categories
+    allProduct: builder.query({
+      query: () => `all-category`,
+      providesTags: ["Product"], // attaches tag
+    }),
+
+    // ✅ Update Category
+    updateCategory: builder.mutation({
+      query: ({ id,payload }) => ({
+        url: `category-update/${id}`,
+        method: "PUT",
+        body: payload,
+      }),
+      invalidatesTags: ["Category"], // refetch list after update
+    }),
+
+    // ✅ Delete Category
+    deleteCategory: builder.mutation({
+      query: (id) => ({
+        url: `category-deleete/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Category"], // refetch list after delete
       providesTags: ["Product"]
     }),
 
@@ -56,14 +100,17 @@ export const productApiSlice = createApi({
         method: "DELETE",
       }),
       invalidatesTags: ["Product"],
+
     }),
   }),
 });
 
 export const {
   useAddProductMutation,
-  useGetAllProductsQuery,
-  useGetSingleProductQuery,
-  useUpdateProductMutation,
-  useDeleteProductMutation,
-} = productApiSlice;
+
+  useSingleProductQuery,
+  useUpdateCategoryMutation,
+  useDeleteCategoryMutation,
+  useAllProductQuery
+  
+} = productSlice;
