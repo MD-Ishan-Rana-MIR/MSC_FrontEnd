@@ -3,13 +3,15 @@ import { MessageCircle } from "lucide-react";
 import { Link } from 'react-router-dom';
 
 const PostCard = ({ blog }) => {
+    console.log(blog);
+
     return (
         <div className="bg-white  overflow-hidden shadow border transition">
             {/* Image Section */}
             <div className="relative">
                 <img
-                    src={blog.image}
-                    alt={blog.title}
+                    src={blog?.image}
+                    alt={blog?.title}
                     className="w-full h-56 object-cover"
                 />
                 <div className="absolute top-2 left-2 flex flex-wrap gap-1">
@@ -22,14 +24,10 @@ const PostCard = ({ blog }) => {
             {/* Content Section */}
             <div className="p-4">
                 <div className="mt-4">
-                    {blog.tag.map((item, i) => (
-                        <div key={i} className="inline-block mr-2">
-                            <p className=' text-[#737373] font-normal  text-xs ' >{item}</p>
-                        </div>
-                    ))}
+                    
                 </div>
-                <h2 className="text-lg font-bold text-[#252B42]">{blog.title}</h2>
-                <p className="text-sm text-gray-600 mt-2">{blog.description}</p>
+                <h2 className="text-lg font-bold text-[#252B42]">{blog?.title}</h2>
+                <p className="text-sm text-gray-600 mt-2">{blog?.description}</p>
 
                 <div className="flex justify-between items-center mt-4 text-gray-500 text-sm">
                     <span className=' flex flex-row items-center gap-x-1 ' > <span><svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">

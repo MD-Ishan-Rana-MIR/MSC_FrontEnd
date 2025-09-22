@@ -4,39 +4,14 @@ import PostCard from '@/components/website/home/PostCard';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 const Post = () => {
-    const blogData = [
-        {
-            "image": "/images/home/post/blog-1.png",
-            "tag": ["Technology", "AI"],
-            "title": "How AI is Changing the World",
-            "description": "Artificial Intelligence is rapidly transforming industries, from healthcare to finance.",
-            "date": "2025-08-15",
-            "totalComment": 12
-        },
-        {
-            "image": "/images/home/post/blog-2.png",
-            "tag": ["Design", "UI/UX"],
-            "title": "Top 10 UI Trends in 2025",
-            "description": "Explore the latest design trends that are shaping modern user experiences.",
-            "date": "2025-08-12",
-            "totalComment": 8
-        },
-        {
-            "image": "/images/home/post/blog-3.png",
-            "tag": ["Business", "Startup"],
-            "title": "Scaling Your Startup the Right Way",
-            "description": "Learn the strategies successful founders use to grow their businesses sustainably.",
-            "date": "2025-08-10",
-            "totalComment": 20
-        }
-    ]
+
     const axiosPublic = useAxiosPublic();
 
     const { data: blogs } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
             const res = await axiosPublic.get('/all-blog')
-            return res.data;
+            return res?.data?.data;
         }
     })
 
@@ -54,9 +29,11 @@ const Post = () => {
             </div>
             <div>
                 <div className="max-w-6xl mx-auto py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {blogData.map((blog, index) => (
-                        <PostCard key={index} blog={blog} />
-                    ))}
+                    {
+                        blogs?.map((blog, index) => (
+                            <PostCard key={index} blog={blog} />
+                        ))
+                    }
                 </div>
             </div>
         </div>
