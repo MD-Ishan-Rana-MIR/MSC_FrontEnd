@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import { MdDashboard } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import SideBar from "@/components/admin/SideBar";
@@ -19,7 +20,7 @@ const AdminLayout = () => {
       sublink: false,
     }
     ,
-   
+
     {
       id: 2,
       icon: <MdDashboard />,
@@ -56,7 +57,7 @@ const AdminLayout = () => {
         },
       ]
     },
-        {
+    {
       id: 4,
       icon: <MdDashboard />,
       text: "Product",
@@ -98,6 +99,30 @@ const AdminLayout = () => {
           </div>
         </div>
       </div>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+          success: {
+            duration: 3000,
+            iconTheme: {
+              primary: '#4ade80',
+              secondary: '#fff',
+            },
+          },
+          error: {
+            duration: 4000,
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: '#fff',
+            },
+          },
+        }}
+      />
     </>
   );
 };
