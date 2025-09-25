@@ -28,6 +28,12 @@ import ProductList from "@/page/admin/product/ProductList";
 import ProductUpload from "@/page/admin/product/ProductUpload";
 import AddProduct from "@/page/admin/product/AddProduct";
 import NewArrival from "@/page/website/new-arrival/NewArrival";
+import BlogCreate from "@/page/admin/blog/BlogCreate";
+import BlogList from "@/page/admin/blog/BlogList";
+import BlogUpdate from "@/page/admin/blog/BlogUpdate";
+import NotFound from "@/page/not-found/NotFound";
+import SendEmail from "@/page/admin/email/SendEmail";
+import AllSubscriber from "@/page/admin/email/AllSubscriber";
 
 
 export const MainRouter = createBrowserRouter([
@@ -141,7 +147,30 @@ export const MainRouter = createBrowserRouter([
         path: "add-product",
         element: <AddProduct />
 
+      },
+      {
+        path : "create-blog",
+        element : <BlogCreate></BlogCreate>
+      },
+      {
+        path : "blog-list",
+        element : <BlogList/>
+      },
+      {
+        path : "blog-update/:id",
+        element : <BlogUpdate></BlogUpdate>
+      },
+      // email
+      {
+        path : "send-email",
+        element : <SendEmail></SendEmail>
+      },
+      {
+        path : "all-subscriber",
+        element : <AllSubscriber></AllSubscriber>
       }
+
+
     ],
   },
   {
@@ -160,4 +189,8 @@ export const MainRouter = createBrowserRouter([
     path: "/admin-login",
     element: <AdminLogin />,
   },
+  {
+    path : "/*",
+    element : <NotFound></NotFound>
+  }
 ]);

@@ -19,7 +19,7 @@ const AdminLayout = () => {
       sublink: false,
     }
     ,
-   
+
     {
       id: 2,
       icon: <MdDashboard />,
@@ -56,7 +56,7 @@ const AdminLayout = () => {
         },
       ]
     },
-        {
+    {
       id: 4,
       icon: <MdDashboard />,
       text: "Product",
@@ -71,6 +71,42 @@ const AdminLayout = () => {
           id: 2,
           text: "Upload Product",
           path: "/dashboard/add-product"
+        },
+      ]
+    },
+    {
+      id: 5,
+      icon: <MdDashboard />,
+      text: "Blog",
+      path: "/dashboard/blog-list",
+      sublink: [
+        {
+          id: 1,
+          text: "Blog List",
+          path: "/dashboard/blog-list",
+        },
+        {
+          id: 2,
+          text: "Upload Blog",
+          path: "/dashboard/create-blog"
+        },
+      ]
+    },
+    {
+      id: 6,
+      icon: <MdDashboard />,
+      text: "Email",
+      path: "/dashboard/blog-list",
+      sublink: [
+        {
+          id: 1,
+          text: "Send Email",
+          path: "/dashboard/send-email",
+        },
+        {
+          id: 2,
+          text: "All Subscriber",
+          path: "/dashboard/all-subscriber"
         },
       ]
     },
