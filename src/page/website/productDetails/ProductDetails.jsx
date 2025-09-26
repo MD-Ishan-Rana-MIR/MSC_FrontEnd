@@ -6,13 +6,30 @@ import { MdBatteryChargingFull } from "react-icons/md"
 import { GoVerified } from "react-icons/go";
 import { IoStorefrontOutline } from "react-icons/io5";
 import { CiDeliveryTruck } from "react-icons/ci";
-import { colors, images, storage } from "@/lib/Data";
 
-const ProductDetails = () => {
+const ProductDetails = ({ productDetails }) => {
     const [selectedImage, setSelectedImage] = useState(0)
-    const [selectedColor, setSelectedColor] = useState("black")
-    const [selectedStorage, setSelectedStorage] = useState("1TB")
+    const [selectedColor, setSelectedColor] = useState("")
+    const [selectedStorage, setSelectedStorage] = useState("128GB")
     const [isFavorite, setIsFavorite] = useState(false)
+
+    if (!productDetails) {
+        return <div>Loading...</div>;
+    }
+
+    // Get all product images from the product data
+    const productImages = [
+        productDetails.product_image_1,
+        productDetails.product_image_2,
+        productDetails.product_image_3,
+        productDetails.product_image_4
+    ].filter(Boolean); // Remove any null/undefined images
+
+    // Set default selected color to first available color
+    if (!selectedColor && productDetails.product_color?.length > 0) {
+        setSelectedColor(productDetails.product_color[0].name);
+    }
+
     return (
         <div className="max-w-6xl mx-auto md:px-8 md:py-12">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -21,9 +38,8 @@ const ProductDetails = () => {
                 <div className="flex flex-col-reverse gap-[15px] md:gap-0 md:flex-row">
 
                     {/* Thumbnails */}
-                    <div
-                        className="w-full md:w-[20%] flex flex-row md:flex-col md:gap-4 max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 md:pr-2">
-                        {images.map((image, index) => (
+                    <div className="w-full md:w-[20%] flex flex-row md:flex-col md:gap-4 max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 md:pr-2">
+                        {productImages.map((image, index) => (
                             <button
                                 key={index}
                                 onClick={() => setSelectedImage(index)}
@@ -32,8 +48,8 @@ const ProductDetails = () => {
                             >
                                 <img
                                     src={image}
-                                    alt={`Product ${index + 1}`}
-                                    className="object-cover"
+                                    alt={`${productDetails.product_name} ${index + 1}`}
+                                    className="object-cover w-full h-full"
                                 />
                             </button>
                         ))}
@@ -42,8 +58,8 @@ const ProductDetails = () => {
                     {/* Main image */}
                     <div className="w-full md:w-[80%] dark:bg-slate-900 bg-gray-100 rounded-sm h-[280px] md:h-[400px] relative flex items-center justify-center">
                         <img
-                            src={images[selectedImage]}
-                            alt="Product main image"
+                            src={productImages[selectedImage]}
+                            alt={productDetails.product_name}
                             className="object-cover w-[200px] md:w-[300px] rounded-lg hover:scale-105 transition"
                         />
                     </div>
@@ -52,45 +68,44 @@ const ProductDetails = () => {
                 {/* Right side - Product details */}
                 <div className="flex flex-col gap-6">
                     <div>
-                        <h1 className="text-[1.6rem] dark:text-[#abc2d3] md:text-[1.9rem] font-bold text-gray-800">Apple iPhone 14 Pro Max</h1>
+                        <h1 className="text-[1.6rem] dark:text-[#abc2d3] md:text-[1.9rem] font-bold text-gray-800">
+                            {productDetails.product_name}
+                        </h1>
                         <div className="flex items-center gap-2 mt-2 md:mt-5">
-                            <span className="text-3xl dark:text-[#abc2d3] font-medium">$1399</span>
-                            <span className="text-xl dark:text-slate-400 text-gray-500 line-through">$1499</span>
+                            <span className="text-3xl dark:text-[#abc2d3] font-medium">
+                                ${productDetails.discount_price || productDetails.price}
+                            </span>
+                            {productDetails.discount_price && productDetails.discount_price < productDetails.price && (
+                                <span className="text-xl dark:text-slate-400 text-gray-500 line-through">
+                                    ${productDetails.price}
+                                </span>
+                            )}
                         </div>
                     </div>
 
                     {/* Color selection */}
-                    <div className="flex float-start md:items-center flex-col md:flex-row gap-[10px]">
-                        <label className="text-sm dark:text-[#abc2d3] font-medium">Select color:</label>
-                        <div className="flex gap-3">
-                            {colors.map((color) => (
-                                <button
-                                    key={color.name}
-                                    onClick={() => setSelectedColor(color.name)}
-                                    className={`w-8 h-8 rounded-full ${color.class} ${selectedColor === color.name ? "ring-2 dark:ring-offset-slate-800 ring-offset-2 ring-[#0FABCA]" : ""
-                                        }`}
-                                    aria-label={color.name}
-                                />
-                            ))}
+                    {productDetails.product_color && productDetails.product_color.length > 0 && (
+                        <div className="flex float-start md:items-center flex-col md:flex-row gap-[10px]">
+                            <label className="text-sm dark:text-[#abc2d3] font-medium">Select color:</label>
+                            <div className="flex gap-3">
+                                {productDetails.product_color.map((color) => (
+                                    <button
+                                        key={color._id}
+                                        onClick={() => setSelectedColor(color.name)}
+                                        className={`w-8 h-8 rounded-full ${selectedColor === color.name ? "ring-2 dark:ring-offset-slate-800 ring-offset-2 ring-[#0FABCA]" : ""
+                                            }`}
+                                        style={{ backgroundColor: color.code }}
+                                        aria-label={color.name}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
-                    {/* Storage selection */}
+                    {/* Storage selection - Using hardcoded since not in JSON */}
                     <div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                            {storage.map((size) => (
-                                <button
-                                    key={size}
-                                    onClick={() => setSelectedStorage(size)}
-                                    className={`py-2 px-4 rounded-lg border ${selectedStorage === size
-                                        ? "border-[#0FABCA] bg-[#0FABCA]/10 text-[#0FABCA]"
-                                        : "border-gray-200 dark:border-slate-700 dark:text-[#abc2d3]"
-                                        }`}
-                                >
-                                    {size}
-                                </button>
-                            ))}
-                        </div>
+                        <label className="text-sm dark:text-[#abc2d3] font-medium mb-2 block">Select storage:</label>
+                       
                     </div>
 
                     {/* Specifications */}
@@ -99,36 +114,44 @@ const ProductDetails = () => {
                             <FiSmartphone className="w-5 h-5 dark:text-[#abc2d3] text-gray-700" />
                             <div>
                                 <p className="text-sm dark:text-[#abc2d3] text-gray-500">Screen size</p>
-                                <p className="font-medium text-gray-700 dark:text-slate-400 text-[0.9rem]">6.7"</p>
+                                <p className="font-medium text-gray-700 dark:text-slate-400 text-[0.9rem]">
+                                    {productDetails.size || "N/A"}
+                                </p>
                             </div>
                         </div>
                         <div className="flex items-center gap-2 dark:bg-slate-900 bg-gray-50 p-3 rounded-lg">
                             <FiCpu className="w-5 h-5 dark:text-[#abc2d3] text-gray-700" />
                             <div>
-                                <p className="text-sm dark:text-[#abc2d3] text-gray-500">CPU</p>
-                                <p className="font-medium text-gray-700 dark:text-slate-400 text-[0.9rem]">Apple A16 Bionic</p>
+                                <p className="text-sm dark:text-[#abc2d3] text-gray-500">Product Type</p>
+                                <p className="font-medium text-gray-700 dark:text-slate-400 text-[0.9rem]">
+                                    {productDetails.product_type}
+                                </p>
                             </div>
                         </div>
                         <div className="flex items-center gap-2 dark:bg-slate-900 bg-gray-50 p-3 rounded-lg">
-                            <IoMdCamera className="w-5 h-5 dark:text-[#abc2d3] text-gray-700" />
+                            <IoStorefrontOutline className="w-5 h-5 dark:text-[#abc2d3] text-gray-700" />
                             <div>
-                                <p className="text-sm dark:text-[#abc2d3] text-gray-500">Camera</p>
-                                <p className="font-medium text-gray-700 dark:text-slate-400 text-[0.9rem]">48-12-12 MP</p>
+                                <p className="text-sm dark:text-[#abc2d3] text-gray-500">Category</p>
+                                <p className="font-medium text-gray-700 dark:text-slate-400 text-[0.9rem]">
+                                    {productDetails.category_id}
+                                </p>
                             </div>
                         </div>
                         <div className="flex items-center gap-2 dark:bg-slate-900 bg-gray-50 p-3 rounded-lg">
-                            <MdBatteryChargingFull className="w-5 h-5 dark:text-[#abc2d3] text-gray-700" />
+                            <GoVerified className="w-5 h-5 dark:text-[#abc2d3] text-gray-700" />
                             <div>
-                                <p className="text-sm dark:text-[#abc2d3] text-gray-500">Battery</p>
-                                <p className="font-medium text-gray-700 dark:text-slate-400 text-[0.9rem]">4323 mAh</p>
+                                <p className="text-sm dark:text-[#abc2d3] text-gray-500">Brand</p>
+                                <p className="font-medium text-gray-700 dark:text-slate-400 text-[0.9rem]">
+                                    {productDetails.brand_id}
+                                </p>
                             </div>
                         </div>
                     </div>
 
+                    {/* Product description placeholder */}
                     <p className="text-[0.9rem] dark:text-slate-400 text-gray-600">
-                        Enhanced capabilities thanks to an enlarged display of 6.7 inches and work without
-                        recharging throughout the day. Incredible photos in weak, yes and in bright light using
-                        the new system with two cameras...
+                        Discover the amazing features of the {productDetails.product_name}. 
+                        This {productDetails.product_type.toLowerCase()} offers exceptional performance and quality...
                         <button className="text-[#3B9DF8] hover:underline">more...</button>
                     </p>
 
@@ -138,19 +161,16 @@ const ProductDetails = () => {
                             onClick={() => setIsFavorite(!isFavorite)}
                             className="flex-1 py-3 px-4 dark:border-slate-700 dark:text-[#abc2d3] dark:hover:bg-slate-900 rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-50">
                             <div className="flex items-center justify-center gap-2">
-                                {
-                                    isFavorite ? (
-                                        <BsHeartFill className="w-5 h-5 text-red-500" />
-                                    )
-                                        : (
-                                            <BsHeart className="w-5 h-5" />
-                                        )
-                                }
+                                {isFavorite ? (
+                                    <BsHeartFill className="w-5 h-5 text-red-500" />
+                                ) : (
+                                    <BsHeart className="w-5 h-5" />
+                                )}
                                 Add to Wishlist
                             </div>
                         </button>
                         <button className="flex-1 py-3 px-4 rounded-lg bg-[#0FABCA] text-white hover:bg-[#0FABCA]/90">
-                            Add to Card
+                            Add to Cart
                         </button>
                     </div>
 
@@ -160,7 +180,7 @@ const ProductDetails = () => {
                             <CiDeliveryTruck className="text-[3rem] dark:bg-slate-900 dark:text-[#abc2d3] text-gray-500 p-3 bg-gray-100 rounded-md" />
                             <div>
                                 <p className="text-sm dark:text-[#abc2d3] text-gray-500">Free Delivery</p>
-                                <p className="font-medium text-[0.9rem] dark:text-slate-500 text-gray-800">1-2 day</p>
+                                <p className="font-medium text-[0.9rem] dark:text-slate-500 text-gray-800">1-2 days</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-3">
@@ -184,4 +204,4 @@ const ProductDetails = () => {
     );
 };
 
-export default ProductDetails;
+export default ProductDetails;  
