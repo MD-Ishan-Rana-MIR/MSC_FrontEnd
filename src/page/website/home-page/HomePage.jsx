@@ -9,12 +9,13 @@ import Post from './Post'
 const HomePage = () => {
   return (
     <div>
-        <HomeBanner></HomeBanner>
-        <Category></Category>
-        <Product></Product>
-        <ClassicProduct></ClassicProduct>
-        <NeuralProduct></NeuralProduct>
-        <Post></Post>
+      <HomeBanner></HomeBanner>
+      <Category></Category>
+      <Product></Product>
+      <ClassicProduct></ClassicProduct>
+      <NeuralProduct></NeuralProduct>
+      <Post></Post>
+      
     </div>
   )
 }

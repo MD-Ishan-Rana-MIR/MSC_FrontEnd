@@ -22,7 +22,7 @@ const AllProductsCards = () => {
   const { data: products, isLoading, error } = useQuery({
     queryKey: ['products'],
     queryFn: async () => {
-      const res = await axiosPublic.get('/product-by-category/68bd2537d24d7a97b0ffb812');
+      const res = await axiosPublic.get('/all-product');
       return res?.data?.data;
     }
   })
@@ -115,7 +115,7 @@ const AllProductsCards = () => {
     department: product.product_type,
     price: `$${product.price}`,
     sale: `$${product.discount_price}`,
-    image: product.product_image_1 || 'https://placehold.co/600x400',
+    image: product.product_image_1 ,
     colors: product.product_color?.map(color => color.code) || [],
     size: product.size
   })) || [];
@@ -139,6 +139,8 @@ const AllProductsCards = () => {
   if (error) {
     return <div className="container mx-auto sm:px-8 text-center py-8 text-red-500">Error loading products</div>;
   }
+
+  console.log('filtered product', filteredProducts)
 
   return (
     <div className="container mx-auto sm:px-8">

@@ -49,7 +49,7 @@ const PostCard = ({ blog }) => {
                     </span>
                 </div>
                 <div>
-                    <Link to={`/blog-details/id`} className=' flex items-center gap-x-2.5 my-2.5 ' >
+                    <p className='flex items-center gap-x-2.5 my-2.5 ' >
                         <button className=' font-bold text-[#737373] text-sm  cursor-pointer ' >Learn More</button>
                         <span><svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_3508_183)">
@@ -62,7 +62,7 @@ const PostCard = ({ blog }) => {
                             </defs>
                         </svg>
                         </span>
-                    </Link>
+                    </p>
                 </div>
             </div>
         </div>
