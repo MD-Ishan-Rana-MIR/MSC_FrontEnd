@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import { useUserProfileQuery } from "@/redux/auth-api/authApi";
 import { BsHeart, BsHeartFill } from "react-icons/bs"
 import { FiCpu, FiSmartphone } from "react-icons/fi"
 import { IoMdCamera } from "react-icons/io"
@@ -10,8 +12,12 @@ import { CiDeliveryTruck } from "react-icons/ci";
 const ProductDetails = ({ productDetails }) => {
     const [selectedImage, setSelectedImage] = useState(0)
     const [selectedColor, setSelectedColor] = useState("")
-    const [selectedStorage, setSelectedStorage] = useState("128GB")
+    const [selectedStorage, setSelectedStorage] = useState("M")
+    const [quantity, setQuantity] = useState(1)
     const [isFavorite, setIsFavorite] = useState(false)
+
+    const axiosSecure = useAxiosSecure();
+    const { data: userProfile } = useUserProfileQuery();
 
     if (!productDetails) {
         return <div>Loading...</div>;
@@ -29,6 +35,36 @@ const ProductDetails = ({ productDetails }) => {
     if (!selectedColor && productDetails.product_color?.length > 0) {
         setSelectedColor(productDetails.product_color[0].name);
     }
+
+    const handleAddToCart = async () => {
+        try {
+            const userId = userProfile?.data?._id || userProfile?.data?.id;
+            if (!userId) {
+                alert("Please login to add items to cart.");
+                return;
+            }
+            const productId = productDetails?._id;
+            if (!productId) {
+                alert("Product information not available.");
+                return;
+            }
+            const payload = {
+                userId,
+                productId,
+                quentity: Number(quantity) || 1,
+                size: selectedStorage,
+                color: selectedColor || (productDetails?.product_color?.[0]?.name || "")
+            };
+
+            const res = await axiosSecure.post("/add-to-cart", payload);
+            if (res?.data) {
+                alert("Added to cart successfully.");
+            }
+        } catch (error) {
+            console.error("Add to cart failed", error);
+            alert(error?.response?.data?.message || "Failed to add to cart.");
+        }
+    };
 
     return (
         <div className="max-w-6xl mx-auto md:px-8 md:py-12">
@@ -102,10 +138,36 @@ const ProductDetails = ({ productDetails }) => {
                         </div>
                     )}
 
-                    {/* Storage selection - Using hardcoded since not in JSON */}
-                    <div>
-                        <label className="text-sm dark:text-[#abc2d3] font-medium mb-2 block">Select storage:</label>
-                       
+                    {/* Size/Storage selection */}
+                    <div className="flex flex-col gap-2">
+                        <label className="text-sm dark:text-[#abc2d3] font-medium">Select size:</label>
+                        <div className="flex gap-2">
+                            {['S', 'M', 'L', 'XL'].map((sz) => (
+                                <button
+                                    key={sz}
+                                    onClick={() => setSelectedStorage(sz)}
+                                    className={`px-3 py-1 rounded border ${selectedStorage === sz ? 'bg-[#0FABCA] text-white border-[#0FABCA]' : 'dark:border-slate-700 border-gray-200'}`}
+                                >
+                                    {sz}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Quantity */}
+                    <div className="flex items-center gap-3">
+                        <label className="text-sm dark:text-[#abc2d3] font-medium">Quantity:</label>
+                        <div className="flex items-center gap-2">
+                            <button onClick={() => setQuantity((q) => Math.max(1, q - 1))} className="px-3 py-1 border rounded dark:border-slate-700 border-gray-200">-</button>
+                            <input
+                                type="number"
+                                min={1}
+                                value={quantity}
+                                onChange={(e) => setQuantity(Math.max(1, Number(e.target.value) || 1))}
+                                className="w-16 text-center border rounded dark:border-slate-700 border-gray-200 py-1"
+                            />
+                            <button onClick={() => setQuantity((q) => q + 1)} className="px-3 py-1 border rounded dark:border-slate-700 border-gray-200">+</button>
+                        </div>
                     </div>
 
                     {/* Specifications */}
@@ -150,7 +212,7 @@ const ProductDetails = ({ productDetails }) => {
 
                     {/* Product description placeholder */}
                     <p className="text-[0.9rem] dark:text-slate-400 text-gray-600">
-                        Discover the amazing features of the {productDetails.product_name}. 
+                        Discover the amazing features of the {productDetails.product_name}.
                         This {productDetails.product_type.toLowerCase()} offers exceptional performance and quality...
                         <button className="text-[#3B9DF8] hover:underline">more...</button>
                     </p>
@@ -169,7 +231,7 @@ const ProductDetails = ({ productDetails }) => {
                                 Add to Wishlist
                             </div>
                         </button>
-                        <button className="flex-1 py-3 px-4 rounded-lg bg-[#0FABCA] text-white hover:bg-[#0FABCA]/90">
+                        <button onClick={handleAddToCart} className="flex-1 py-3 px-4 rounded-lg bg-[#0FABCA] text-white hover:bg-[#0FABCA]/90">
                             Add to Cart
                         </button>
                     </div>
