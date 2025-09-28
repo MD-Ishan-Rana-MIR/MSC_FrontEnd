@@ -29,7 +29,7 @@ export const productApiSlice = createApi({
 
     // ✅ Get All Products
     getAllProducts: builder.query({
-      query: () => `all-products`,
+      query: () => `all-product`,
       providesTags: ["Product"],
     }),
 
@@ -55,7 +55,7 @@ export const productApiSlice = createApi({
     // ✅ Delete Product
     deleteProduct: builder.mutation({
       query: (id) => ({
-        url: `product-delete/${id}`,
+        url: `delete-product/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Product"],

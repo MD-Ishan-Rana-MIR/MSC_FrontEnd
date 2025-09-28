@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { uploadImg } from "@/img-upload/UploadImage";
@@ -13,7 +13,7 @@ const ProductUpload = () => {
   const { data: categories } =useGetAllCategoriesQuery();
   const { data: brands } = useGetAllBrandQuery();
 
-  const [createProduct] = useAddProductMutation();
+  const [createProduct,{isLoading}] = useAddProductMutation();
 
   // Form state
   const [formData, setFormData] = useState({
@@ -225,9 +225,11 @@ const ProductUpload = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-teal-500 text-white font-bold py-2 px-4 rounded hover:bg-teal-600"
+            className="bg-teal-500 text-white font-bold py-2 px-4 rounded hover:bg-teal-600 cursor-pointer "
           >
-            Create Product
+            {
+              isLoading ? "loading..." : "Create Product"
+            }
           </button>
         </div>
       </form>
