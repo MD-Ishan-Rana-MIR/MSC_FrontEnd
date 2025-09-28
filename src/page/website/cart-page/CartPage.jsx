@@ -1,6 +1,8 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '@/hooks/useAxiosSecure'
+import toast from 'react-hot-toast';
+import { FaCartArrowDown } from 'react-icons/fa6';
 
 const CartPage = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,8 +26,10 @@ const CartPage = () => {
   }, 0);
 
   const handleDeleteItem = async (cartItemId) => {
+
     try {
       await axiosSecure.delete(`/cart-delete/${cartItemId}`);
+      toast.success('Item removed from cart');
       await refetch();
     } catch (error) {
       console.error('Failed to delete cart item', error);
@@ -44,7 +48,7 @@ const CartPage = () => {
   if (isError) {
     return (
       <div className='max-w-6xl mx-auto p-8'>
-        <p className='text-red-500'>Failed to load cart.</p>
+        <p className='text-red-500 text-center text-3xl flex justify-center items-center'><FaCartArrowDown /> No items in cart.</p>
       </div>
     );
   }
@@ -54,12 +58,12 @@ const CartPage = () => {
       <div className='max-w-6xl mx-auto p-6 md:p-8'>
         <h1 className='text-2xl font-semibold mb-6'>Cart</h1>
 
-        {cartItems.length === 0 ? (
+        {data.length === 0 ? (
           <p>Your cart is empty.</p>
         ) : (
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div className='md:col-span-2 space-y-4'>
-              {cartItems.map((item) => (
+              {data?.map((item) => (
                 <div key={item._id} className='flex gap-4 items-center p-4 border rounded-lg dark:border-slate-700'>
                   <img src={item?.product?.product_image_1} alt={item?.product?.product_name} className='w-20 h-20 object-cover rounded' />
                   <div className='flex-1'>
