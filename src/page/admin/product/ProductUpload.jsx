@@ -78,7 +78,7 @@ const ProductUpload = () => {
     try {
       await createProduct(payload).unwrap();
       toast.success("Product created successfully!");
-      navigate("/admin/products");
+      navigate("/dashboard/product-list");
     } catch (err) {
       toast.error("Failed to create product!");
     }
