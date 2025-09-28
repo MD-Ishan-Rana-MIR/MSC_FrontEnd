@@ -41,8 +41,12 @@ export default function BrandListPage() {
         }
       }
     } catch (error) {
-      toast.error(error?.data?.msg || "Failed to delete brand");
-      console.log(error);
+      toast.error(error?.data?.message || "Failed to delete brand");
+      console.log(error?.data?.message);
+      if(error?.data?.message == "Token expired"){
+        localStorage.removeItem("admin_token")
+         window.location.href = "/admin-login"
+      }
     }
   };
 

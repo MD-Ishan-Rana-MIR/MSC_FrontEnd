@@ -7,7 +7,7 @@ const UserProtectedRouter = ({ children }) => {
 
   if (!token) {
     // If not logged in, redirect to login page
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/auth" replace />;
   }
 
   // If token exists, render the children components
