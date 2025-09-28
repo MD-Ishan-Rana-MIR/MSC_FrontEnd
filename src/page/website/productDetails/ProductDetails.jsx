@@ -8,6 +8,7 @@ import { MdBatteryChargingFull } from "react-icons/md"
 import { GoVerified } from "react-icons/go";
 import { IoStorefrontOutline } from "react-icons/io5";
 import { CiDeliveryTruck } from "react-icons/ci";
+import toast from "react-hot-toast";
 
 const ProductDetails = ({ productDetails }) => {
     const [selectedImage, setSelectedImage] = useState(0)
@@ -40,12 +41,12 @@ const ProductDetails = ({ productDetails }) => {
         try {
             const userId = userProfile?.data?._id || userProfile?.data?.id;
             if (!userId) {
-                alert("Please login to add items to cart.");
+                toast.error("Please login to add items to cart.");
                 return;
             }
             const productId = productDetails?._id;
             if (!productId) {
-                alert("Product information not available.");
+                toast.error("Product information not available.");
                 return;
             }
             const payload = {
@@ -58,11 +59,11 @@ const ProductDetails = ({ productDetails }) => {
 
             const res = await axiosSecure.post("/add-to-cart", payload);
             if (res?.data) {
-                alert("Added to cart successfully.");
+                toast.success("Added to cart successfully.");
             }
         } catch (error) {
             console.error("Add to cart failed", error);
-            alert(error?.response?.data?.message || "Failed to add to cart.");
+            toast.error(error?.response?.data?.message || "Failed to add to cart.");
         }
     };
 
@@ -171,7 +172,7 @@ const ProductDetails = ({ productDetails }) => {
                     </div>
 
                     {/* Specifications */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="flex items-center gap-2 dark:bg-slate-900 bg-gray-50 p-3 rounded-lg">
                             <FiSmartphone className="w-5 h-5 dark:text-[#abc2d3] text-gray-700" />
                             <div>
@@ -208,7 +209,7 @@ const ProductDetails = ({ productDetails }) => {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Product description placeholder */}
                     <p className="text-[0.9rem] dark:text-slate-400 text-gray-600">
