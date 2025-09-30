@@ -213,9 +213,7 @@ const ProductDetails = ({ productDetails }) => {
 
                     {/* Product description placeholder */}
                     <p className="text-[0.9rem] dark:text-slate-400 text-gray-600">
-                        Discover the amazing features of the {productDetails.product_name}.
-                        This {productDetails.product_type.toLowerCase()} offers exceptional performance and quality...
-                        <button className="text-[#3B9DF8] hover:underline">more...</button>
+                        {productDetails.product_des}
                     </p>
 
                     {/* Action buttons */}

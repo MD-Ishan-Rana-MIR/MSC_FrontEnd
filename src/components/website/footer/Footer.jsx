@@ -3,8 +3,34 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import { Link } from "react-router-dom"; // <-- React Router DOM
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+
 
 export default function Footer() {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+    const axiosPublic = useAxiosPublic();
+
+    const onSubmit = async (data) => {
+        console.log(data);
+        try {
+            const res = await axiosPublic.post("/subcribe", data);
+            if (res) {
+                console.log(res);
+                toast.success(res?.message);
+            }
+        } catch (error) {
+            toast.error(error?.message);
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <div className=" bg-[#FAFAFA] " >
@@ -96,12 +122,15 @@ export default function Footer() {
 
                         <div>
                             <h2 className=" text-orange-secondary text-[16px]  font-bold mb-5">Get In Touch</h2>
-                            <div className="flex flex-col sm:flex-row lg:space-y-0 space-y-4 ">
-                                <Input placeholder="Your Email" className="flex-1" />
-                                <Button className="bg-orange-primary text-white hover:bg-orange-dark transition-colors">
-                                    Subscribe
-                                </Button>
-                            </div>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className="flex flex-col sm:flex-row lg:space-y-0 space-y-4 ">
+                                    <input type="email" placeholder="Your Email" className="flex-1 border border-orange-primary rounded-md p-2" {...register("email")} />
+                                    <Button className="bg-orange-primary text-white hover:bg-orange-dark transition-colors">
+                                        Subscribe
+                                    </Button>
+                                </div>
+                            </form>
+
                             <p className="text-orange-light font-normal text-xs mt-2">Lore imp sum dolor Amit</p>
                         </div>
                     </div>
