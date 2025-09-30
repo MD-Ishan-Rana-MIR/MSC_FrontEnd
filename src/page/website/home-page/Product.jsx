@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/website/home/product-card/ProductCard";
 import { Link } from "react-router-dom";
+import AllProductsCards from "../productsPage/productListings/AllProductsCards";
 
 const Product = () => {
     const products = [
@@ -93,6 +94,9 @@ const Product = () => {
                         </Link>
                     ))}
                 </div>
+
+                {/* <AllProductsCards /> */}
+
             </div>
         </div>
     );
