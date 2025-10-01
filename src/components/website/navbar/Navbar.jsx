@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ShoppingCart, Heart, Search, User, Menu, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
   const [shopOpen, setShopOpen] = useState(false);
@@ -51,6 +52,13 @@ export default function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user-token");
+    setToken(null);
+    localStorage.removeItem("welcomeModalShown");
+    toast.success("Logged out successfully");
+  }
 
   return (
     <nav className="bg-white shadow-md relative">
@@ -138,7 +146,7 @@ export default function Navbar() {
                     Orders
                   </Link>
                   <button
-                    // onClick={handleLogout}
+                    onClick={handleLogout}
                     className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     Logout
