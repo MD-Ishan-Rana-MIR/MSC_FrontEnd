@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const uploadImg = async (file) => {
-    const cloudName = 'dj2edy2rg'
+    const cloudName = 'dozcb8llv'
     const data = new FormData();
     data.append('file', file)
     data.append('upload_preset', 'e-commerce')

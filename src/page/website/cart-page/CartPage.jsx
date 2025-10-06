@@ -1,8 +1,9 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '@/hooks/useAxiosSecure'
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { FaCartArrowDown } from 'react-icons/fa6';
+import { useCreateInvoiceMutation } from '@/redux/invoice/invoiceApi';
 
 const CartPage = () => {
   const axiosSecure = useAxiosSecure();
@@ -36,6 +37,19 @@ const CartPage = () => {
       alert(error?.response?.data?.message || 'Failed to delete item.');
     }
   };
+
+  const [createInvoice,] = useCreateInvoiceMutation();
+
+  const handleInvoice = async () => {
+    try {
+      const res = await createInvoice().unwrap();
+      if (res) {
+        window.location.href = res?.data?.GatewayPageUrl
+      }
+    } catch (error) {
+      toast.error(error?.data?.msg || 'Something went wrong');
+    }
+  }
 
   if (isLoading) {
     return (
@@ -93,11 +107,15 @@ const CartPage = () => {
                 <span className='font-semibold'>Total</span>
                 <span className='font-semibold'>${subtotal.toFixed(2)}</span>
               </div>
-              <button className='w-full mt-4 py-2 rounded bg-[#0FABCA] text-white hover:bg-[#0FABCA]/90'>Checkout</button>
+              <button onClick={handleInvoice} className='w-full cursor-pointer mt-4 py-2 rounded bg-[#0FABCA] text-white hover:bg-[#0FABCA]/90'>Checkout</button>
             </div>
           </div>
         )}
       </div>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
     </div>
   )
 }
