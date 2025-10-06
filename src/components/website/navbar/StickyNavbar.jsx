@@ -23,7 +23,7 @@ const StickyNavbar = () => {
 
                         </span>
                         <p className=' font-bold text-sm ' >
-                            (225) 555-0118
+                            +880 1885-797571
                         </p>
                     </div>
                     <div className='flex items-center gap-2 text-white'>
@@ -35,7 +35,7 @@ const StickyNavbar = () => {
 
                         </span>
                         <p className=' font-bold text-sm ' >
-                            michelle.rivera@example.com
+                            sakibchowdhury242188@gmail.com
                         </p>
                     </div>
                 </div>
