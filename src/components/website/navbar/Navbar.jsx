@@ -67,7 +67,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <div className="flex-shrink-0 font-bold text-xl text-orange-primary">
-            <Link to="/">Bandage</Link>
+            <Link to="/">ShopnoBuy</Link>
           </div>
 
           {/* Desktop Menu */}
