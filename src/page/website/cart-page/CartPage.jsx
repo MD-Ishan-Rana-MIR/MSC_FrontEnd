@@ -4,6 +4,7 @@ import useAxiosSecure from '@/hooks/useAxiosSecure'
 import toast, { Toaster } from 'react-hot-toast';
 import { FaCartArrowDown } from 'react-icons/fa6';
 import { useCreateInvoiceMutation } from '@/redux/invoice/invoiceApi';
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,7 +17,8 @@ const CartPage = () => {
     }
   });
 
-  console.log(data);
+
+
 
 
   const cartItems = Array.isArray(data) ? data : [];
@@ -39,14 +41,17 @@ const CartPage = () => {
   };
 
   const [createInvoice,] = useCreateInvoiceMutation();
+  const navigate = useNavigate();
 
   const handleInvoice = async () => {
     try {
       const res = await createInvoice().unwrap();
       if (res) {
-        window.location.href = res?.data?.GatewayPageUrl
+        navigate("/PaymentSuccess");
+        // window.location.href = res?.data?.GatewayPageUrl
       }
     } catch (error) {
+      navigate("/PaymentSuccess");
       toast.error(error?.data?.msg || 'Something went wrong');
     }
   }

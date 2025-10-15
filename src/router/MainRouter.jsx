@@ -34,6 +34,8 @@ import BlogUpdate from "@/page/admin/blog/BlogUpdate";
 import NotFound from "@/page/not-found/NotFound";
 import SendEmail from "@/page/admin/email/SendEmail";
 import AllSubscriber from "@/page/admin/email/AllSubscriber";
+import PaymentSuccess from "@/components/website/PaymentSuccess";
+import PaymentFail from "@/components/website/team/PaymentFail";
 
 
 export const MainRouter = createBrowserRouter([
@@ -149,25 +151,25 @@ export const MainRouter = createBrowserRouter([
 
       },
       {
-        path : "create-blog",
-        element : <BlogCreate></BlogCreate>
+        path: "create-blog",
+        element: <BlogCreate></BlogCreate>
       },
       {
-        path : "blog-list",
-        element : <BlogList/>
+        path: "blog-list",
+        element: <BlogList />
       },
       {
-        path : "blog-update/:id",
-        element : <BlogUpdate></BlogUpdate>
+        path: "blog-update/:id",
+        element: <BlogUpdate></BlogUpdate>
       },
       // email
       {
-        path : "send-email",
-        element : <SendEmail></SendEmail>
+        path: "send-email",
+        element: <SendEmail></SendEmail>
       },
       {
-        path : "all-subscriber",
-        element : <AllSubscriber></AllSubscriber>
+        path: "all-subscriber",
+        element: <AllSubscriber></AllSubscriber>
       }
 
 
@@ -190,7 +192,16 @@ export const MainRouter = createBrowserRouter([
     element: <AdminLogin />,
   },
   {
-    path : "/*",
-    element : <NotFound></NotFound>
-  }
+    path: "/PaymentSuccess",
+    element: <PaymentSuccess></PaymentSuccess>
+  },
+  {
+    path: "/PaymentFail",
+    element: <PaymentFail></PaymentFail>
+  },
+  {
+    path: "/*",
+    element: <NotFound></NotFound>
+  },
+
 ]);
