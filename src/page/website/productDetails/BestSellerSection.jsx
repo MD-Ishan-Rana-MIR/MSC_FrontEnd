@@ -4,67 +4,67 @@ const BestsellerProducts = () => {
     const products = [
         {
             id: 1,
-            image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=300&h=300&fit=crop",
-            title: "Graphic Design",
-            department: "English Department",
-            originalPrice: "$16.48",
-            salePrice: "$6.48"
+            image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=300&h=300&fit=crop",
+            title: "Luxury Chronograph Watch",
+            department: "Men's Watches",
+            originalPrice: "$299.99",
+            salePrice: "$199.99"
         },
         {
             id: 2,
-            image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=300&fit=crop",
-            title: "Creative Writing",
-            department: "English Department",
-            originalPrice: "$18.99",
-            salePrice: "$8.99"
+            image: "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?w=300&h=300&fit=crop",
+            title: "Classic Leather Handbag",
+            department: "Women's Accessories",
+            originalPrice: "$189.99",
+            salePrice: "$129.99"
         },
         {
             id: 3,
-            image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=300&h=300&fit=crop",
-            title: "Photography",
-            department: "Arts Department",
-            originalPrice: "$20.00",
-            salePrice: "$10.00"
+            image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=300&h=300&fit=crop",
+            title: "Designer Sunglasses",
+            department: "Accessories",
+            originalPrice: "$159.00",
+            salePrice: "$99.00"
         },
         {
             id: 4,
-            image: "https://images.unsplash.com/photo-1529101091764-c3526daf38fe?w=300&h=300&fit=crop",
-            title: "Music Production",
-            department: "Music Department",
-            originalPrice: "$22.50",
-            salePrice: "$12.50"
+            image: "https://images.unsplash.com/photo-1594576722512-582bcd46fba3?w=300&h=300&fit=crop",
+            title: "Premium Running Shoes",
+            department: "Footwear",
+            originalPrice: "$149.99",
+            salePrice: "$89.99"
         },
         {
             id: 5,
-            image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=300&h=300&fit=crop",
-            title: "Web Development",
-            department: "Computer Science",
-            originalPrice: "$25.00",
-            salePrice: "$15.00"
+            image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=300&h=300&fit=crop",
+            title: "Minimalist Silver Watch",
+            department: "Women's Watches",
+            originalPrice: "$179.99",
+            salePrice: "$119.99"
         },
         {
             id: 6,
-            image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&h=300&fit=crop",
-            title: "UI/UX Design",
-            department: "Design Department",
-            originalPrice: "$30.00",
-            salePrice: "$18.00"
+            image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=300&h=300&fit=crop",
+            title: "Casual Denim Jacket",
+            department: "Men's Clothing",
+            originalPrice: "$89.99",
+            salePrice: "$59.99"
         },
         {
             id: 7,
-            image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&h=300&fit=crop",
-            title: "Digital Marketing",
-            department: "Business Department",
-            originalPrice: "$19.99",
-            salePrice: "$9.99"
+            image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&h=300&fit=crop",
+            title: "Elegant Pearl Necklace",
+            department: "Jewelry",
+            originalPrice: "$249.99",
+            salePrice: "$179.99"
         },
         {
             id: 8,
-            image: "https://images.unsplash.com/photo-1532619187608-e5375cab36aa?w=300&h=300&fit=crop",
-            title: "Cooking Basics",
-            department: "Culinary Department",
-            originalPrice: "$14.50",
-            salePrice: "$7.50"
+            image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=300&h=300&fit=crop",
+            title: "Sport Smartwatch",
+            department: "Electronics",
+            originalPrice: "$199.99",
+            salePrice: "$149.99"
         }
     ];
 
